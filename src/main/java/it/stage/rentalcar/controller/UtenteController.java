@@ -1,4 +1,4 @@
-package controller;
+package it.stage.rentalcar.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

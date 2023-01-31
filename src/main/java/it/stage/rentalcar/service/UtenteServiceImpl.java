@@ -1,4 +1,4 @@
-package service;
+package it.stage.rentalcar.service;
 
 import org.springframework.stereotype.Service;
 

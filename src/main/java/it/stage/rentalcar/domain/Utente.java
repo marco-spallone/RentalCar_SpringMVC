@@ -1,4 +1,4 @@
-package domain;
+package it.stage.rentalcar.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;

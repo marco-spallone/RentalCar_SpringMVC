@@ -1,6 +1,6 @@
-package config;
+package it.stage.rentalcar.config;
 
-import domain.Utente;
+import it.stage.rentalcar.domain.Utente;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 import java.util.Properties;
 @org.springframework.context.annotation.Configuration
-@ComponentScan(basePackages = "config")
+@ComponentScan(basePackages = "it.stage.rentalcar.config")
 public class HibernateUtil {
     private static SessionFactory sessionFactory;
     public static SessionFactory getSessionFactory() {
