@@ -1,5 +1,7 @@
 package it.stage.rentalcar.config;
 
+import it.stage.rentalcar.domain.Auto;
+import it.stage.rentalcar.domain.Prenotazione;
 import it.stage.rentalcar.domain.Utente;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -7,10 +9,12 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
 
 import java.util.Properties;
 @org.springframework.context.annotation.Configuration
 @ComponentScan(basePackages = "it.stage.rentalcar.config")
+@PropertySource(value = { "classpath:application.properties" })
 public class HibernateUtil {
     private static SessionFactory sessionFactory;
     public static SessionFactory getSessionFactory() {
@@ -35,6 +39,8 @@ public class HibernateUtil {
                 configuration.setProperties(settings);
 
                 configuration.addAnnotatedClass(Utente.class);
+                configuration.addAnnotatedClass(Prenotazione.class);
+                configuration.addAnnotatedClass(Auto.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
@@ -48,5 +54,7 @@ public class HibernateUtil {
 
         return sessionFactory;
     }
+
+
 
 }
