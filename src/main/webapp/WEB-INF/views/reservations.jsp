@@ -11,6 +11,20 @@
   <script src="https://kit.fontawesome.com/6b1574191b.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<c:choose>
+  <c:when test="${isAdmin=='true'}">
+    <c:set var="url1" value="customers?isAdmin=true&myid=${myid}" />
+  </c:when>
+  <c:otherwise>
+    <c:set var="url1" value="viewReservations?isAdmin=false&myid=${myid}&id=${myid}" />
+  </c:otherwise>
+</c:choose>
+
+<jsp:include page="navbar.jsp">
+  <jsp:param name="url1" value="${url1}" />
+  <jsp:param name="url2" value=""/>
+  <jsp:param name="url3" value=""/>
+</jsp:include>
 <div class="container">
   <div class="row">
     <div class="mx-auto mt-5 col-sm-8">
@@ -19,7 +33,7 @@
         <c:choose>
           <c:when test="${isAdmin=='true'}"></c:when>
           <c:otherwise>
-            <a href="<spring:url value="/addReservation?isAdmin=${isAdmin}&id=${id}" /> "><button class="btn">
+            <a href="<spring:url value="/addReservation?myid=${myid}" /> "><button class="btn">
               <i class="fa-regular fa-calendar-plus fa-lg" style="color: dodgerblue"></i></button></a>
           </c:otherwise>
         </c:choose>
@@ -42,6 +56,7 @@
               <td>${reservation.dataInizio}</td>
               <td>${reservation.dataFine}</td>
               <td>${reservation.auto.marca} ${reservation.auto.modello}</td>
+              <td></td>
             </tr>
           </c:forEach>
           </tbody>

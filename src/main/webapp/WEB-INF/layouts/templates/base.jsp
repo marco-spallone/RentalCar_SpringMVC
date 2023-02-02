@@ -6,7 +6,6 @@
     <title>Base</title>
 </head>
 <body>
-    <tiles:insertAttribute name="navbar" />
     <tiles:insertAttribute name="content" />
 </body>
 </html>

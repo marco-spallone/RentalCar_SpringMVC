@@ -1,6 +1,10 @@
 package it.stage.rentalcar.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Entity
@@ -30,6 +34,15 @@ public class Prenotazione {
     private Auto auto = new Auto();
 
     public Prenotazione() {
+    }
+
+    public Prenotazione(int idPrenotazione, Date dataInizio, Date dataFine, boolean confermata, Utente utente, Auto auto) {
+        this.idPrenotazione = idPrenotazione;
+        this.dataInizio = dataInizio;
+        this.dataFine = dataFine;
+        this.confermata = confermata;
+        this.utente = utente;
+        this.auto = auto;
     }
 
     public int getIdPrenotazione() {

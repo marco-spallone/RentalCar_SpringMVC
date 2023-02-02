@@ -18,42 +18,44 @@ public class UtenteController {
     }
 
     @RequestMapping(value = "/customers", method = RequestMethod.GET)
-    public String getCustomers(@RequestParam("id") int id, Model model){
+    public String getCustomers(@RequestParam("myid") int myid, Model model){
         List<Utente> customers = utenteService.getCustomers(false);
         model.addAttribute("customers", customers);
-        model.addAttribute("id", id);
+        model.addAttribute("myid", myid);
         return "customers";
     }
     @RequestMapping(value = "/addCustomer", method = RequestMethod.GET)
-    public String addCustomer(Model model){
+    public String addCustomer(@RequestParam("myid") int myid, Model model){
         Utente utente = new Utente();
         model.addAttribute("newCustomer", utente);
+        model.addAttribute("myid", myid);
         return "addCustomer";
     }
 
     @RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
-    public String insCustomer(@ModelAttribute("newCustomer") Utente utente){
+    public String insCustomer(@RequestParam("myid") int myid, @ModelAttribute("newCustomer") Utente utente){
         utenteService.insOrUpCustomer(utente);
-        return "redirect:/customers?isAdmin=true&id=1";
+        return "redirect:/customers?isAdmin=true&myid="+myid;
     }
 
-    @RequestMapping(value = "/editCustomer/{id}", method = RequestMethod.GET)
-    public String editCustomer(@PathVariable("id") int id, Model model){
+    @RequestMapping(value = "/editCustomer", method = RequestMethod.GET)
+    public String editCustomer(@RequestParam("id") int id, @RequestParam("myid") int myid, Model model){
         Utente utente = new Utente();
         model.addAttribute("id", id);
+        model.addAttribute("myid", myid);
         model.addAttribute("newCustomer", utente);
         return "addCustomer";
     }
 
-    @RequestMapping(value = "/editCustomer/{id}", method = RequestMethod.POST)
-    public String upCustomer(@ModelAttribute("newCustomer") Utente utente){
+    @RequestMapping(value = "/editCustomer", method = RequestMethod.POST)
+    public String upCustomer(@RequestParam("myid") int myid, @ModelAttribute("newCustomer") Utente utente){
         utenteService.insOrUpCustomer(utente);
-        return "redirect:/customers?isAdmin=true&id=1";
+        return "redirect:/customers?isAdmin=true&myid="+myid;
     }
 
-    @RequestMapping(value = "/deleteCustomer/{id}", method = RequestMethod.GET)
-    public String deleteCustomer(@PathVariable("id") int id){
+    @RequestMapping(value = "/deleteCustomer", method = RequestMethod.GET)
+    public String deleteCustomer(@RequestParam("id") int id, @RequestParam("myid") int myid){
         utenteService.delCustomer(id);
-        return "redirect:/customers?isAdmin=true&id=1";
+        return "redirect:/customers?isAdmin=true&myid="+myid;
     }
 }

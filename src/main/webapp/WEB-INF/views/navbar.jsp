@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: marco
-  Date: 31/01/2023
-  Time: 14:29
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -24,18 +18,17 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                1
+                <a class="nav-link" href="${param.url1}">Home</a>
             </li>
             <li class="nav-item">
-                2
+                <a class="nav-link" href="${param.url2}">Parco Auto</a>
             </li>
             <li class="nav-item">
-                3
+                <a class="nav-link" href="${param.url3}">Profilo utente</a>
             </li>
         </ul>
     </div>
     <div class="nav navbar-nav navbar-right">
-
     </div>
 </nav>
 
