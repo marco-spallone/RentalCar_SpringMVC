@@ -16,4 +16,10 @@
     <definition name="addCustomer" extends="baseLayout">
         <put-attribute name="content" value="/WEB-INF/views/addCustomer.jsp"/>
     </definition>
+    <definition name="reservations" extends="baseLayout">
+        <put-attribute name="content" value="/WEB-INF/views/reservations.jsp"/>
+    </definition>
+    <definition name="addReservation" extends="baseLayout">
+        <put-attribute name="content" value="/WEB-INF/views/addReservation.jsp"/>
+    </definition>
 </tiles-definitions>

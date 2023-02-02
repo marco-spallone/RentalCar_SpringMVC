@@ -17,12 +17,11 @@ public class UtenteController {
         this.utenteService = utenteService;
     }
 
-    @RequestMapping(value = "/customers/{isAdmin}", method = RequestMethod.GET)
-    public String getCustomers(@PathVariable("isAdmin") Boolean isAdmin, Model model){
-        Utente utente = new Utente();
-        List<Utente> customers = utenteService.getCustomers(isAdmin);
+    @RequestMapping(value = "/customers", method = RequestMethod.GET)
+    public String getCustomers(@RequestParam("id") int id, Model model){
+        List<Utente> customers = utenteService.getCustomers(false);
         model.addAttribute("customers", customers);
-        model.addAttribute("delCustomer", utente);
+        model.addAttribute("id", id);
         return "customers";
     }
     @RequestMapping(value = "/addCustomer", method = RequestMethod.GET)
@@ -35,7 +34,7 @@ public class UtenteController {
     @RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
     public String insCustomer(@ModelAttribute("newCustomer") Utente utente){
         utenteService.insOrUpCustomer(utente);
-        return "redirect:/customers/0";
+        return "redirect:/customers?isAdmin=true&id=1";
     }
 
     @RequestMapping(value = "/editCustomer/{id}", method = RequestMethod.GET)
@@ -49,6 +48,12 @@ public class UtenteController {
     @RequestMapping(value = "/editCustomer/{id}", method = RequestMethod.POST)
     public String upCustomer(@ModelAttribute("newCustomer") Utente utente){
         utenteService.insOrUpCustomer(utente);
-        return "redirect:/customers/0";
+        return "redirect:/customers?isAdmin=true&id=1";
+    }
+
+    @RequestMapping(value = "/deleteCustomer/{id}", method = RequestMethod.GET)
+    public String deleteCustomer(@PathVariable("id") int id){
+        utenteService.delCustomer(id);
+        return "redirect:/customers?isAdmin=true&id=1";
     }
 }

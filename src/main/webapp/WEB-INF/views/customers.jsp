@@ -17,7 +17,8 @@
     <div class="row">
         <div class="mx-auto mt-5 col-md-6 col-sm-6">
             <h3 class="page-title">Customers</h3>
-            <div class="mt-4 mb-4"><a href="<spring:url value="/addCustomer" />"><button class="btn"><i class="fa-solid fa-user-plus fa-lg"></i></button></a></div>
+            <div class="mt-4 mb-4"><a href="<spring:url value="/addCustomer" />">
+                <button class="btn"><i class="fa-solid fa-user-plus fa-lg" style="color: dodgerblue"></i></button></a></div>
             <div id="tabUtenti">
                 <table class="table table-striped table-bordered" id="tab">
                     <thead>
@@ -32,6 +33,8 @@
                             <td>${customer.nome}</td>
                             <td>${customer.cognome}</td>
                             <td><a href="<spring:url value='/editCustomer/${customer.idUtente}' />">Modifica</a></td>
+                            <td><a href="<spring:url value='/viewReservations?isAdmin=true&id=${id}' />">Prenotazioni</a></td>
+                            <td><a href="<spring:url value='/deleteCustomer/${customer.idUtente}' />">Elimina</a></td>
                         </tr>
                     </c:forEach>
                     </tbody>

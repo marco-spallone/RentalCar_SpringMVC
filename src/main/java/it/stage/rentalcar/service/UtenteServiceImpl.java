@@ -19,6 +19,8 @@ public class UtenteServiceImpl implements UtenteService {
     public List<Utente> getCustomers(boolean isAdmin) {
         return utenteRepository.getCustomers(isAdmin);
     }
+    @Override
+    public Utente getUserFromId(int id){ return utenteRepository.getUserFromId(id); }
     public void insOrUpCustomer(Utente utente) {
         utenteRepository.insOrUpCustomer(utente);
     }
