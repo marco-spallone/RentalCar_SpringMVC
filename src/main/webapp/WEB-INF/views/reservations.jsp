@@ -31,7 +31,7 @@
       <h3>Prenotazioni effettuate</h3>
       <div class="row"><div class="mt-4 mb-4 col-sm-1">
         <c:choose>
-          <c:when test="${isAdmin=='true'}"></c:when>
+          <c:when test="${isAdmin=='true'}" />
           <c:otherwise>
             <a href="<spring:url value="/addReservation?myid=${myid}" /> "><button class="btn">
               <i class="fa-regular fa-calendar-plus fa-lg" style="color: dodgerblue"></i></button></a>
@@ -50,13 +50,23 @@
           </thead>
           <tbody>
           <c:forEach var="reservation" items="${reservations}">
-            <fmt:parseNumber var="giorni" value="${( reservation.dataInizio.time - now.time ) / (1000*60*60*24) }"
-                             integerOnly="true" scope="page"/>
             <tr>
               <td>${reservation.dataInizio}</td>
               <td>${reservation.dataFine}</td>
               <td>${reservation.auto.marca} ${reservation.auto.modello}</td>
-              <td></td>
+              <td>
+                <c:choose>
+                  <c:when test="${reservation.confermata==true}">Sì</c:when>
+                  <c:otherwise>No</c:otherwise>
+                </c:choose>
+              </td>
+              <c:choose>
+                <c:when test="${isAdmin=='false'}">
+                  <td><a href="editReservation?myid=${myid}&id=${reservation.idPrenotazione}">Modifica</a></td>
+                  <td><a href="deleteReservation?myid=${myid}&id=${reservation.idPrenotazione}">Elimina</a></td>
+                </c:when>
+                <c:otherwise></c:otherwise>
+              </c:choose>
             </tr>
           </c:forEach>
           </tbody>

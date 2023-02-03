@@ -29,7 +29,7 @@ public class UtenteController {
         Utente utente = new Utente();
         model.addAttribute("newCustomer", utente);
         model.addAttribute("myid", myid);
-        return "addCustomer";
+        return "customerForm";
     }
 
     @RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
@@ -44,7 +44,7 @@ public class UtenteController {
         model.addAttribute("id", id);
         model.addAttribute("myid", myid);
         model.addAttribute("newCustomer", utente);
-        return "addCustomer";
+        return "customerForm";
     }
 
     @RequestMapping(value = "/editCustomer", method = RequestMethod.POST)
