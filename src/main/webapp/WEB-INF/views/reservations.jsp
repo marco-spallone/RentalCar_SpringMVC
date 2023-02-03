@@ -22,7 +22,7 @@
 
 <jsp:include page="navbar.jsp">
   <jsp:param name="url1" value="${url1}" />
-  <jsp:param name="url2" value=""/>
+  <jsp:param name="url2" value="cars?isAdmin=${isAdmin}&myid=${myid}&id=${myid}"/>
   <jsp:param name="url3" value=""/>
 </jsp:include>
 <div class="container">
@@ -39,7 +39,7 @@
         </c:choose>
       </div></div>
       <div id="tabPrenotazioni">
-        <table class="table table-striped" id="tab">
+        <table class="table table-striped table-bordered" id="tab">
           <thead>
           <tr>
             <th scope="col">Data inizio</th>

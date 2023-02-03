@@ -13,8 +13,8 @@
 </head>
 <jsp:include page="navbar.jsp">
     <jsp:param name="url1" value="customers?isAdmin=true&myid=${myid}" />
-    <jsp:param name="url2" value="autoServlet?isAdmin=1&id=${id}&action=home"/>
-    <jsp:param name="url3" value="utenteServlet?action=profilo&isAdmin=1&id=${id}"/>
+    <jsp:param name="url2" value="cars?isAdmin=true&myid=${myid}&id=${myid}"/>
+    <jsp:param name="url3" value=""/>
 </jsp:include>
 <div class="container">
     <div class="row">

@@ -40,10 +40,12 @@ public class UtenteController {
 
     @RequestMapping(value = "/editCustomer", method = RequestMethod.GET)
     public String editCustomer(@RequestParam("id") int id, @RequestParam("myid") int myid, Model model){
-        Utente utente = new Utente();
+        Utente newU = new Utente();
+        Utente actualU = utenteService.getUserFromId(id);
         model.addAttribute("id", id);
         model.addAttribute("myid", myid);
-        model.addAttribute("newCustomer", utente);
+        model.addAttribute("newCustomer", newU);
+        model.addAttribute("actualCustomer", actualU);
         return "customerForm";
     }
 

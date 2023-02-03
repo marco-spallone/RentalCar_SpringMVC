@@ -2,6 +2,11 @@ package it.stage.rentalcar.repository;
 
 import it.stage.rentalcar.domain.Auto;
 
+import java.util.List;
+
 public interface AutoRepository {
-    Auto getAutoFromId(int id);
+    List<Auto> getCars();
+    Auto getCarFromId(int id);
+    void insOrUpCar(Auto a);
+    void deleteCar(int id);
 }

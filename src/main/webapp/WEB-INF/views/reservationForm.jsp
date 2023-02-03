@@ -14,7 +14,7 @@
 <body>
 <jsp:include page="navbar.jsp">
     <jsp:param name="url1" value="viewReservations?isAdmin=false&myid=${myid}&id=${myid}" />
-    <jsp:param name="url2" value=""/>
+    <jsp:param name="url2" value="cars?isAdmin=false&myid=${myid}&id=${myid}"/>
     <jsp:param name="url3" value=""/>
 </jsp:include>
 <div class="container">

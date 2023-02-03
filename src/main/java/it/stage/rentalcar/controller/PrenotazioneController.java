@@ -1,5 +1,6 @@
 package it.stage.rentalcar.controller;
 
+import it.stage.rentalcar.domain.Auto;
 import it.stage.rentalcar.domain.Prenotazione;
 import it.stage.rentalcar.domain.Utente;
 import it.stage.rentalcar.dto.PrenotazioneDTO;
@@ -11,8 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -32,7 +33,7 @@ public class PrenotazioneController {
     @RequestMapping(value = "/viewReservations", method = RequestMethod.GET)
     public String viewReservations(@RequestParam("isAdmin") boolean isAdmin, @RequestParam("id") int id, @RequestParam("myid") int myid,
                                    Model model){
-        List<Prenotazione> reservations = prenotazioneService.getReservations(id);
+        List<Prenotazione> reservations = prenotazioneService.getReservationsForUser(id);
         model.addAttribute("reservations", reservations);
         model.addAttribute("isAdmin", isAdmin);
         model.addAttribute("myid", myid);
@@ -58,6 +59,9 @@ public class PrenotazioneController {
         if(fine.before(inizio) || inizio.before(now)){
             throw new Exception("Date invalide.");
         } else {
+            //con criteria
+            List<Auto> alreadyReserved = new ArrayList<>();
+            List<Prenotazione> reservations = prenotazioneService.getReservationsForUser(myid);
             PrenotazioneMapper prenotazioneMapper = new PrenotazioneMapper(utenteService, autoService);
             prenotazioneService.insOrUpReservation(prenotazioneMapper.fromDTOtoEntity(prenotazioneDTO));
             return "redirect:/viewReservations?isAdmin=false&id="+myid+"&myid="+myid;
@@ -84,6 +88,7 @@ public class PrenotazioneController {
 
     @RequestMapping(value = "editReservation", method = RequestMethod.POST)
     public String updateReservation(@RequestParam("myid") int myid, @ModelAttribute("newReservation") PrenotazioneDTO prenotazioneDTO) throws Exception {
+        //nel service
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date now = new Date();
         Date inizio = sdf.parse(prenotazioneDTO.getDataInizio());
@@ -91,6 +96,7 @@ public class PrenotazioneController {
         if(fine.before(inizio) || inizio.before(now)){
             throw new Exception("Date invalide.");
         } else {
+            //nel service
             PrenotazioneMapper prenotazioneMapper = new PrenotazioneMapper(utenteService, autoService);
             prenotazioneService.insOrUpReservation(prenotazioneMapper.fromDTOtoEntity(prenotazioneDTO));
             return "redirect:/viewReservations?isAdmin=false&id="+myid+"&myid="+myid;

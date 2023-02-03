@@ -21,7 +21,7 @@
     <definition name="addReservation" extends="baseLayout">
         <put-attribute name="content" value="/WEB-INF/views/addReservation.jsp"/>
     </definition>
-    <definition name="feedback" extends="baseLayout">
-        <put-attribute name="content" value="/WEB-INF/views/feedback.jsp"/>
+    <definition name="addCar" extends="baseLayout">
+        <put-attribute name="content" value="/WEB-INF/views/addCar.jsp"/>
     </definition>
 </tiles-definitions>

@@ -9,18 +9,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49c873af-4aaa-48a2-b84f-678c0f7086f6" name="Changes" comment="-Correzione operazioni CRUD per l'utente admin.&#10;-Implementazione aggiunta prenotazione.&#10;-Implementazione DTO per gestire le date inserite dall'utente.&#10;-Implementazione mapper per mappare i dati dell'entità Prenotazione.&#10;-Implementazione dei redirect home nella navbar.&#10;-Correzioni varie.">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/feedback.jsp" afterDir="false" />
+    <list default="true" id="49c873af-4aaa-48a2-b84f-678c0f7086f6" name="Changes" comment="-Implementazione operazione elimina prenotazione.&#10;-Implementazione controllo sulle date della prenotazione per eventuale modifica.&#10;-Modifica alla vista delle pagine JSP.">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/carFleet.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/carForm.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/AutoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/AutoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/PrenotazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/PrenotazioneController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/UtenteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/UtenteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/domain/Prenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/domain/Prenotazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/mapper/PrenotazioneMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/mapper/PrenotazioneMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/AutoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/AutoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/AutoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/AutoRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/UtenteRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/UtenteRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/AutoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/AutoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/AutoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/AutoServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/definitions/tiles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/definitions/tiles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customerForm.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addReservation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reservationForm.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customerForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customerForm.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customers.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customers.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reservationForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reservationForm.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reservations.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reservations.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,22 +78,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/marco/Downloads/AlphaShop_V6/AlphaShop_V6&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;f2af7077a0e2b6f6ea7e5d11c88ff024&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/marco/Downloads/AlphaShop_V6/AlphaShop_V6",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "spring.configuration.checksum": "f2af7077a0e2b6f6ea7e5d11c88ff024",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="it.stage.rentalcar.repository" />
@@ -199,7 +210,7 @@
       <workItem from="1675240965033" duration="24274000" />
       <workItem from="1675272182515" duration="320000" />
       <workItem from="1675325556515" duration="26637000" />
-      <workItem from="1675413240093" duration="10853000" />
+      <workItem from="1675413240093" duration="23114000" />
     </task>
     <task id="LOCAL-00001" summary="-Creazione progetto e definizione delle dipendenze Maven.">
       <created>1674837981489</created>
@@ -243,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675356862416</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="-Implementazione operazione elimina prenotazione.&#10;-Implementazione controllo sulle date della prenotazione per eventuale modifica.&#10;-Modifica alla vista delle pagine JSP.">
+      <created>1675425358146</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1675425358146</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,6 +282,7 @@
     <MESSAGE value="-Realizzazione Homepage.&#10;-Implementazione controller e operazioni per la gestione dei customers." />
     <MESSAGE value="-Implementazione operazione elimina customer.&#10;-Implementazione lista prenotazioni." />
     <MESSAGE value="-Correzione operazioni CRUD per l'utente admin.&#10;-Implementazione aggiunta prenotazione.&#10;-Implementazione DTO per gestire le date inserite dall'utente.&#10;-Implementazione mapper per mappare i dati dell'entità Prenotazione.&#10;-Implementazione dei redirect home nella navbar.&#10;-Correzioni varie." />
-    <option name="LAST_COMMIT_MESSAGE" value="-Correzione operazioni CRUD per l'utente admin.&#10;-Implementazione aggiunta prenotazione.&#10;-Implementazione DTO per gestire le date inserite dall'utente.&#10;-Implementazione mapper per mappare i dati dell'entità Prenotazione.&#10;-Implementazione dei redirect home nella navbar.&#10;-Correzioni varie." />
+    <MESSAGE value="-Implementazione operazione elimina prenotazione.&#10;-Implementazione controllo sulle date della prenotazione per eventuale modifica.&#10;-Modifica alla vista delle pagine JSP." />
+    <option name="LAST_COMMIT_MESSAGE" value="-Implementazione operazione elimina prenotazione.&#10;-Implementazione controllo sulle date della prenotazione per eventuale modifica.&#10;-Modifica alla vista delle pagine JSP." />
   </component>
 </project>

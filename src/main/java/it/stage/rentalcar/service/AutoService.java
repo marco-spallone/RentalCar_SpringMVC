@@ -1,8 +1,12 @@
 package it.stage.rentalcar.service;
 
 import it.stage.rentalcar.domain.Auto;
-import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 public interface AutoService {
-    Auto getAutoFromId(int id);
+    List<Auto> getCars();
+    Auto getCarFromId(int id);
+    void insOrUpCar(Auto a);
+    void deleteCar(int id);
 }
