@@ -25,7 +25,7 @@
                 <form:input type="hidden" class="form-control" id="idUtente" path="idUtente" value="${myid}"/>
                 <c:choose>
                     <c:when test="${id!=null}">
-                        <form:input type="hidden" class="form-control" id="idUtente" path="id" value="${id}"/>
+                        <form:input type="hidden" class="form-control" id="idPrenotazione" path="id" value="${id}"/>
                     </c:when>
                     <c:otherwise />
                 </c:choose>

@@ -24,4 +24,7 @@
     <definition name="addCar" extends="baseLayout">
         <put-attribute name="content" value="/WEB-INF/views/addCar.jsp"/>
     </definition>
+    <definition name="selectCar" extends="baseLayout">
+        <put-attribute name="content" value="/WEB-INF/views/selectCar.jsp"/>
+    </definition>
 </tiles-definitions>

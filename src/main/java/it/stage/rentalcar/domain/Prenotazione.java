@@ -25,7 +25,7 @@ public class Prenotazione {
     @Column(name="confermata")
     private boolean confermata;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name="id_utente", referencedColumnName = "id_utente", nullable = false)
     private Utente utente;
 

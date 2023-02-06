@@ -4,19 +4,16 @@ import it.stage.rentalcar.domain.Auto;
 import it.stage.rentalcar.domain.Prenotazione;
 import it.stage.rentalcar.domain.Utente;
 import it.stage.rentalcar.dto.PrenotazioneDTO;
-import it.stage.rentalcar.mapper.PrenotazioneMapper;
 import it.stage.rentalcar.service.AutoService;
 import it.stage.rentalcar.service.PrenotazioneService;
 import it.stage.rentalcar.service.UtenteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import java.text.ParseException;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 @Controller
 @RequestMapping("/")
@@ -51,56 +48,46 @@ public class PrenotazioneController {
     }
 
     @RequestMapping(value = "/addReservation", method = RequestMethod.POST)
+    public String getFreeCars(@RequestParam("myid") int myid, @ModelAttribute("newReservation") PrenotazioneDTO prenotazioneDTO, RedirectAttributes redirectAttributes){
+        redirectAttributes.addFlashAttribute("newReservation", prenotazioneDTO);
+        return "redirect:/freeAuto?myid="+myid;
+    }
+
+    @RequestMapping(value = "/freeAuto", method = RequestMethod.GET)
+    public String chooseCar(@RequestParam("myid") int myid, @ModelAttribute("newReservation") PrenotazioneDTO prenotazioneDTO, Model model) throws ParseException {
+        List<Prenotazione> confirmed = prenotazioneService.getReservationsBetweenDates(prenotazioneService.parseDate(prenotazioneDTO).get("inizio"), prenotazioneService.parseDate(prenotazioneDTO).get("fine"));
+        List<Auto> freeCars = autoService.getFreeCars(confirmed);
+        model.addAttribute("auto", freeCars);
+        model.addAttribute("myid", myid);
+        model.addAttribute("newReservation", prenotazioneDTO);
+        return "selectCar";
+    }
+
+    @RequestMapping(value = "/freeAuto", method = RequestMethod.POST)
     public String insReservation(@RequestParam("myid") int myid, @ModelAttribute("newReservation") PrenotazioneDTO prenotazioneDTO) throws Exception {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date now = new Date();
-        Date inizio = sdf.parse(prenotazioneDTO.getDataInizio());
-        Date fine = sdf.parse(prenotazioneDTO.getDataFine());
-        if(fine.before(inizio) || inizio.before(now)){
-            throw new Exception("Date invalide.");
-        } else {
-            //con criteria
-            List<Auto> alreadyReserved = new ArrayList<>();
-            List<Prenotazione> reservations = prenotazioneService.getReservationsForUser(myid);
-            PrenotazioneMapper prenotazioneMapper = new PrenotazioneMapper(utenteService, autoService);
-            prenotazioneService.insOrUpReservation(prenotazioneMapper.fromDTOtoEntity(prenotazioneDTO));
-            return "redirect:/viewReservations?isAdmin=false&id="+myid+"&myid="+myid;
-        }
+        prenotazioneService.insOrUpReservation(prenotazioneService.checkDate(prenotazioneDTO));
+        return "redirect:/viewReservations?isAdmin=false&id="+myid+"&myid="+myid;
     }
 
     @RequestMapping(value = "/editReservation", method = RequestMethod.GET)
     public String editReservation(@RequestParam("myid") int myid, @RequestParam("id") int id, Model model) throws Exception {
         Prenotazione actualP = prenotazioneService.getReservationFromId(id);
-        Date now = new Date();
-        long diffInMillies = Math.abs(actualP.getDataInizio().getTime() - now.getTime());
-        long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-        if(diff==0){
-            throw new Exception("Non è possibile modificare la prenotazione: mancano meno di due giorni alla data di inizio.");
-        } else {
+        if(prenotazioneService.checkModificable(actualP)){
             PrenotazioneDTO newP = new PrenotazioneDTO();
             model.addAttribute("newReservation", newP);
             model.addAttribute("actualReservation", actualP);
             model.addAttribute("myid", myid);
             model.addAttribute("id", id);
             return "reservationForm";
+        } else {
+            throw new Exception("Non è possibile modificare la prenotazione: mancano meno di due giorni alla data di inizio.");
         }
     }
 
     @RequestMapping(value = "editReservation", method = RequestMethod.POST)
     public String updateReservation(@RequestParam("myid") int myid, @ModelAttribute("newReservation") PrenotazioneDTO prenotazioneDTO) throws Exception {
-        //nel service
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date now = new Date();
-        Date inizio = sdf.parse(prenotazioneDTO.getDataInizio());
-        Date fine = sdf.parse(prenotazioneDTO.getDataFine());
-        if(fine.before(inizio) || inizio.before(now)){
-            throw new Exception("Date invalide.");
-        } else {
-            //nel service
-            PrenotazioneMapper prenotazioneMapper = new PrenotazioneMapper(utenteService, autoService);
-            prenotazioneService.insOrUpReservation(prenotazioneMapper.fromDTOtoEntity(prenotazioneDTO));
-            return "redirect:/viewReservations?isAdmin=false&id="+myid+"&myid="+myid;
-        }
+        prenotazioneService.insOrUpReservation(prenotazioneService.checkDate(prenotazioneDTO));
+        return "redirect:/viewReservations?isAdmin=false&id="+myid+"&myid="+myid;
     }
 
     @RequestMapping(value = "deleteReservation", method = RequestMethod.GET)

@@ -2,10 +2,15 @@ package it.stage.rentalcar.repository;
 
 import it.stage.rentalcar.config.HibernateUtil;
 import it.stage.rentalcar.domain.Auto;
+import it.stage.rentalcar.domain.Prenotazione;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
