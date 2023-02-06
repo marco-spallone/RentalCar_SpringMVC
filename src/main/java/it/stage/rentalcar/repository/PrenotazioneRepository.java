@@ -10,5 +10,6 @@ public interface PrenotazioneRepository {
     Prenotazione getReservationFromId(int id);
     List<Prenotazione> getReservationsBetweenDates(Date inizio, Date fine);
     void insOrUpReservation(Prenotazione p);
+    void updateStatus(boolean valid, int id);
     void delReservation(int id);
 }

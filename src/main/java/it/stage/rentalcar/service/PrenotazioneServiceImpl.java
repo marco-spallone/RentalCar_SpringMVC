@@ -75,6 +75,12 @@ public class PrenotazioneServiceImpl implements PrenotazioneService {
     public void insOrUpReservation(Prenotazione p){
         prenotazioneRepository.insOrUpReservation(p);
     }
+
+    @Override
+    public void updateStatus(boolean valid, int id) {
+        prenotazioneRepository.updateStatus(valid, id);
+    }
+
     @Override
     public void delReservation(int id) {
         prenotazioneRepository.delReservation(id);

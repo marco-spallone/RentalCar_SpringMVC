@@ -67,6 +67,22 @@ public class PrenotazioneRepositoryImpl implements PrenotazioneRepository {
     }
 
     @Override
+    public void updateStatus(boolean valid, int id) {
+        try(Session session=HibernateUtil.getSessionFactory().openSession()){
+            Transaction txn = session.beginTransaction();
+            if(valid){
+                session.createQuery("UPDATE Prenotazione p SET confermata=:valid WHERE p.id=:id").setParameter("valid", valid)
+                        .setParameter("id", id).executeUpdate();
+            } else {
+                session.createQuery("DELETE FROM Prenotazione p WHERE p.id=:id").setParameter("id", id).executeUpdate();
+            }
+            txn.commit();
+        } catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    @Override
     public void delReservation(int id) {
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
             Transaction txn = session.beginTransaction();

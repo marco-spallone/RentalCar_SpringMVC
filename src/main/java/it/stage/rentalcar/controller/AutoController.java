@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -22,34 +23,31 @@ public class AutoController {
     }
 
     @RequestMapping(value = "/cars", method = RequestMethod.GET)
-    public String getCars(@RequestParam("myid") int myid, @RequestParam("id") int id, @RequestParam("isAdmin") boolean isAdmin, Model model){
+    public String getCars(HttpSession session, @RequestParam("isAdmin") boolean isAdmin, Model model){
         List<Auto> cars = autoService.getCars();
         model.addAttribute("cars",  cars);
-        model.addAttribute("myid", myid);
-        model.addAttribute("id", id);
+        model.addAttribute("myid", session.getAttribute("myid"));
         model.addAttribute("isAdmin", isAdmin);
         return "carFleet";
     }
 
     @RequestMapping(value = "/addCar", method = RequestMethod.GET)
-    public String addCar(@RequestParam("myid") int myid, Model model){
+    public String addCar(Model model){
         Auto a = new Auto();
-        model.addAttribute("myid", myid);
         model.addAttribute("newAuto", a);
         return "carForm";
     }
 
     @RequestMapping(value = "/addCar", method = RequestMethod.POST)
-    public String insCar(@RequestParam("myid") int myid, @ModelAttribute Auto auto){
+    public String insCar(@ModelAttribute Auto auto){
         autoService.insOrUpCar(auto);
-        return "redirect:/cars?isAdmin=true&myid="+myid+"&id="+myid;
+        return "redirect:/cars?isAdmin=true";
     }
 
     @RequestMapping(value = "/editCar", method = RequestMethod.GET)
-    public String editCar(@RequestParam("myid") int myid, @RequestParam("id") int id, Model model){
+    public String editCar(@RequestParam("id") int id, Model model){
         Auto newA = new Auto();
         Auto actualA = autoService.getCarFromId(id);
-        model.addAttribute("myid", myid);
         model.addAttribute("newAuto", newA);
         model.addAttribute("actualAuto", actualA);
         model.addAttribute("id", id);
@@ -57,14 +55,14 @@ public class AutoController {
     }
 
     @RequestMapping(value = "/editCar", method = RequestMethod.POST)
-    public String upCar(@RequestParam("myid") int myid, @ModelAttribute Auto auto){
+    public String upCar(@ModelAttribute Auto auto){
         autoService.insOrUpCar(auto);
-        return "redirect:/cars?isAdmin=true&myid="+myid+"&id="+myid;
+        return "redirect:/cars?isAdmin=true";
     }
 
     @RequestMapping(value = "/deleteCar", method = RequestMethod.GET)
-    public String deleteCar(@RequestParam("myid") int myid, @RequestParam("id") int id){
+    public String deleteCar(@RequestParam("id") int id){
         autoService.deleteCar(id);
-        return "redirect:/cars?isAdmin=true&myid="+myid+"&id="+myid;
+        return "redirect:/cars?isAdmin=true";
     }
 }

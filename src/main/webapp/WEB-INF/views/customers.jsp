@@ -12,15 +12,15 @@
     <script src="https://kit.fontawesome.com/6b1574191b.js" crossorigin="anonymous"></script>
 </head>
 <jsp:include page="navbar.jsp">
-    <jsp:param name="url1" value="customers?isAdmin=true&myid=${myid}" />
-    <jsp:param name="url2" value="cars?isAdmin=true&myid=${myid}&id=${myid}"/>
-    <jsp:param name="url3" value=""/>
+    <jsp:param name="url1" value="customers" />
+    <jsp:param name="url2" value="cars?isAdmin=true"/>
+    <jsp:param name="url3" value="userProfile"/>
 </jsp:include>
 <div class="container">
     <div class="row">
         <div class="mx-auto mt-5 col-md-6 col-sm-6">
             <h3 class="page-title">Customers</h3>
-            <div class="mt-4 mb-4"><a href="<spring:url value="/addCustomer?myid=${myid}" />">
+            <div class="mt-4 mb-4"><a href="<spring:url value="/addCustomer" />">
                 <button class="btn"><i class="fa-solid fa-user-plus fa-lg" style="color: dodgerblue"></i></button></a></div>
             <div id="tabUtenti">
                 <table class="table table-striped table-bordered" id="tab">
@@ -35,9 +35,9 @@
                         <tr>
                             <td>${customer.nome}</td>
                             <td>${customer.cognome}</td>
-                            <td><a href="<spring:url value='/editCustomer?id=${customer.idUtente}&myid=${myid}' />">Modifica</a></td>
-                            <td><a href="<spring:url value='/viewReservations?isAdmin=true&myid=${myid}&id=${customer.idUtente}' />">Prenotazioni</a></td>
-                            <td><a href="<spring:url value='/deleteCustomer?id=${customer.idUtente}&myid=${myid}' />">Elimina</a></td>
+                            <td><a href="<spring:url value='/editCustomer?id=${customer.idUtente}' />"><button class="mx-auto btn btn-outline-warning"><i class="fa-sharp fa-solid fa-pen fa-lg"></i> Modifica</button></a></td>
+                            <td><a href="<spring:url value='/viewReservations?isAdmin=true&myid=${myid}&id=${customer.idUtente}' />"><button class="btn btn-outline-info"><i class="fa-solid fa-calendar fa-lg"></i> Prenotazioni</button></a></td>
+                            <td><a href="<spring:url value='/deleteCustomer?id=${customer.idUtente}' />"><button class="btn btn-outline-danger"><i class="fa-solid fa-trash fa-lg"></i> Elimina</button></a></td>
                         </tr>
                     </c:forEach>
                     </tbody>

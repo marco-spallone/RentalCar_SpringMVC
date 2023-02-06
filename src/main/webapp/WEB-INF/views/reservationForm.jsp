@@ -14,8 +14,8 @@
 <body>
 <jsp:include page="navbar.jsp">
     <jsp:param name="url1" value="viewReservations?isAdmin=false&myid=${myid}&id=${myid}" />
-    <jsp:param name="url2" value="cars?isAdmin=false&myid=${myid}&id=${myid}"/>
-    <jsp:param name="url3" value=""/>
+    <jsp:param name="url2" value="cars?isAdmin=false"/>
+    <jsp:param name="url3" value="userProfile"/>
 </jsp:include>
 <div class="container">
     <div class="row">
@@ -24,8 +24,8 @@
             <form:form method="post" modelAttribute="newReservation">
                 <form:input type="hidden" class="form-control" id="idUtente" path="idUtente" value="${myid}"/>
                 <c:choose>
-                    <c:when test="${id!=null}">
-                        <form:input type="hidden" class="form-control" id="idPrenotazione" path="id" value="${id}"/>
+                    <c:when test="${newReservation.id!=null}">
+                        <form:input type="hidden" class="form-control" id="idPrenotazione" path="id" value="${newReservation.id}"/>
                     </c:when>
                     <c:otherwise />
                 </c:choose>

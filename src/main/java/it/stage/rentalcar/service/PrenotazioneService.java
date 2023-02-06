@@ -16,5 +16,6 @@ public interface PrenotazioneService {
     Prenotazione checkDate(PrenotazioneDTO prenotazioneDTO) throws Exception;
     boolean checkModificable(Prenotazione p) throws Exception;
     void insOrUpReservation(Prenotazione p);
+    void updateStatus(boolean valid, int id);
     void delReservation(int id);
 }

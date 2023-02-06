@@ -13,8 +13,8 @@
 <body>
 <jsp:include page="navbar.jsp">
   <jsp:param name="url1" value="viewReservations?isAdmin=false&myid=${myid}&id=${myid}" />
-  <jsp:param name="url2" value="cars?isAdmin=false&myid=${myid}&id=${myid}"/>
-  <jsp:param name="url3" value=""/>
+  <jsp:param name="url2" value="cars?isAdmin=false"/>
+  <jsp:param name="url3" value="userProfile"/>
 </jsp:include>
 
 <div class="container">
@@ -22,6 +22,12 @@
     <div class="mx-auto mt-5 col-sm-6">
       <h2>Seleziona auto tra quelle disponibili per le date indicate:</h2>
       <form:form method="post" modelAttribute="newReservation">
+        <c:choose>
+          <c:when test="${newReservation.id==null}" />
+          <c:otherwise>
+            <form:input type="hidden" class="form-control" id="inizio" path="id" value="${newReservation.id}"/>
+          </c:otherwise>
+        </c:choose>
         <form:input type="hidden" class="form-control" id="inizio" path="idUtente" value="${newReservation.idUtente}"/>
         <form:input type="hidden" class="form-control" id="inizio" path="dataInizio" value="${newReservation.dataInizio}"/>
         <form:input type="hidden" class="form-control" id="inizio" path="dataFine" value="${newReservation.dataFine}"/>

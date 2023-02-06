@@ -12,7 +12,7 @@
 <body>
 <c:choose>
     <c:when test="${isAdmin=='true'}">
-        <c:set var="url1" value="customers?isAdmin=true&myid=${myid}" />
+        <c:set var="url1" value="customers" />
     </c:when>
     <c:otherwise>
         <c:set var="url1" value="viewReservations?isAdmin=false&myid=${myid}&id=${myid}" />
@@ -20,17 +20,17 @@
 </c:choose>
 <jsp:include page="navbar.jsp">
     <jsp:param name="url1" value="${url1}" />
-    <jsp:param name="url2" value="cars?isAdmin=${isAdmin}&myid=${myid}&id=${myid}"/>
-    <jsp:param name="url3" value=""/>
+    <jsp:param name="url2" value="cars?isAdmin=${isAdmin}"/>
+    <jsp:param name="url3" value="userProfile"/>
 </jsp:include>
 
 <div class="container">
     <div class="row">
         <div class="mx-auto mt-5 col-md-6 col-sm-6">
-            <h3 class="page-title">Customers</h3>
+            <h3 class="page-title">Parco auto</h3>
             <c:choose>
                 <c:when test="${isAdmin=='true'}">
-                    <div class="mt-4 mb-4"><a href="<spring:url value="/addCar?myid=${myid}" />">
+                    <div class="mt-4 mb-4"><a href="<spring:url value="/addCar" />">
                         <button class="btn"><i class="fa-solid fa-car fa-lg" style="color: dodgerblue"></i></button></a>
                     </div>
                 </c:when>
@@ -57,8 +57,8 @@
                             <td>${car.targa}</td>
                             <c:choose>
                                 <c:when test="${isAdmin=='true'}">
-                                    <td><a href="<spring:url value='/editCar?id=${car.idAuto}&myid=${myid}' />">Modifica</a></td>
-                                    <td><a href="<spring:url value='/deleteCar?id=${car.idAuto}&myid=${myid}' />">Elimina</a></td>
+                                    <td><a href="<spring:url value='/editCar?id=${car.idAuto}' />">Modifica</a></td>
+                                    <td><a href="<spring:url value='/deleteCar?id=${car.idAuto}' />">Elimina</a></td>
                                 </c:when>
                                 <c:otherwise />
                             </c:choose>

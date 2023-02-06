@@ -13,7 +13,7 @@
 <body>
 <c:choose>
   <c:when test="${isAdmin=='true'}">
-    <c:set var="url1" value="customers?isAdmin=true&myid=${myid}" />
+    <c:set var="url1" value="customers" />
   </c:when>
   <c:otherwise>
     <c:set var="url1" value="viewReservations?isAdmin=false&myid=${myid}&id=${myid}" />
@@ -22,8 +22,8 @@
 
 <jsp:include page="navbar.jsp">
   <jsp:param name="url1" value="${url1}" />
-  <jsp:param name="url2" value="cars?isAdmin=${isAdmin}&myid=${myid}&id=${myid}"/>
-  <jsp:param name="url3" value=""/>
+  <jsp:param name="url2" value="cars?isAdmin=${isAdmin}"/>
+  <jsp:param name="url3" value="userProfile"/>
 </jsp:include>
 <div class="container">
   <div class="row">
@@ -33,7 +33,7 @@
         <c:choose>
           <c:when test="${isAdmin=='true'}" />
           <c:otherwise>
-            <a href="<spring:url value="/addReservation?myid=${myid}" /> "><button class="btn">
+            <a href="<spring:url value="/addReservation" /> "><button class="btn">
               <i class="fa-regular fa-calendar-plus fa-lg" style="color: dodgerblue"></i></button></a>
           </c:otherwise>
         </c:choose>
@@ -56,14 +56,24 @@
               <td>${reservation.auto.marca} ${reservation.auto.modello}</td>
               <td>
                 <c:choose>
-                  <c:when test="${reservation.confermata==true}">Sì</c:when>
-                  <c:otherwise>No</c:otherwise>
+                  <c:when test="${reservation.confermata==true}"><i class="fa-solid fa-check"></i></c:when>
+                  <c:otherwise>
+                    <c:choose>
+                      <c:when test="${isAdmin=='true'}">
+                        <a href="approveReservation?id=${reservation.idPrenotazione}"><button class="btn btn-outline-success">
+                          <i class="fa-solid fa-check"></i> Accetta</button></a>
+                        <a href="declineReservation?id=${reservation.idPrenotazione}"><button class="btn btn-outline-danger">
+                          <i class="fa-solid fa-x"></i> Rifiuta</button></a>
+                      </c:when>
+                      <c:otherwise />
+                    </c:choose>
+                  </c:otherwise>
                 </c:choose>
               </td>
               <c:choose>
                 <c:when test="${isAdmin=='false'}">
-                  <td><a href="editReservation?myid=${myid}&id=${reservation.idPrenotazione}">Modifica</a></td>
-                  <td><a href="deleteReservation?myid=${myid}&id=${reservation.idPrenotazione}">Elimina</a></td>
+                  <td><a href="editReservation?id=${reservation.idPrenotazione}">Modifica</a></td>
+                  <td><a href="deleteReservation?id=${reservation.idPrenotazione}">Elimina</a></td>
                 </c:when>
                 <c:otherwise></c:otherwise>
               </c:choose>

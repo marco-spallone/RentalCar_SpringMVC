@@ -12,9 +12,9 @@
 </head>
 <body>
 <jsp:include page="navbar.jsp">
-    <jsp:param name="url1" value="customers?isAdmin=true&myid=${myid}" />
-    <jsp:param name="url2" value="cars?isAdmin=true&myid=${myid}&id=${myid}"/>
-    <jsp:param name="url3" value=""/>
+    <jsp:param name="url1" value="customers" />
+    <jsp:param name="url2" value="cars?isAdmin=true"/>
+    <jsp:param name="url3" value="userProfile"/>
 </jsp:include>
 <div class="container">
     <div class="row">
@@ -23,7 +23,7 @@
             <div class="mt-4 mb-4">
                 <form:form method="post" modelAttribute="newCustomer">
                     <c:choose>
-                        <c:when test="${id==null}"></c:when>
+                        <c:when test="${id==null}" />
                         <c:otherwise>
                             <form:input type="hidden" path="idUtente" value="${id}" />
                         </c:otherwise>
@@ -38,16 +38,16 @@
                     </div>
                     <div class="mb-3">
                         <label for="username" class="form-label">Username: </label>
-                        <form:input type="text" class="form-control" id="name" path="username" value="" />
+                        <form:input type="text" class="form-control" id="username" path="username" value="" />
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password: </label>
                         <form:input type="password" class="form-control" id="password" path="password" value="" />
                     </div>
                     <button type="submit" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
-                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"></path>
                     </svg>Conferma</button>
-                    <a href="<spring:url value="/customers?isAdmin=true&myid=${myid}" />"><button type="button" class="btn btn-warning">Annulla</button></a>
+                    <a href="<spring:url value="/customers?isAdmin=true" />"><button type="button" class="btn btn-warning">Annulla</button></a>
                 </form:form>
             </div>
         </div>
