@@ -7,9 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/")
@@ -28,14 +26,6 @@ public class UtenteController {
         session.setAttribute("isAdmin", "true");
         return "customers";
     }
-
-    @RequestMapping(value = "/filterCustomers", method = RequestMethod.POST)
-    public String filter(@RequestParam("field") String field, @RequestParam("value") String value, Model model){
-        List<Utente> customers = utenteService.filter(field, value);
-        model.addAttribute("customers", customers);
-        return "customers";
-    }
-
     @RequestMapping(value = "/addCustomer", method = RequestMethod.GET)
     public String addCustomer(HttpSession session, Model model){
         Utente utente = new Utente();

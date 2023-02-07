@@ -14,7 +14,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -37,21 +36,13 @@ public class PrenotazioneController {
         model.addAttribute("isAdmin", isAdmin);
         session.setAttribute("myid", myid);
         session.setAttribute("id", id);
-        session.setAttribute("isAdmin", isAdmin);
-        return "reservations";
-    }
-
-    @RequestMapping(value = "/filterReservations", method = RequestMethod.POST)
-    public String filter(@RequestParam("field") String field, @RequestParam("value") String value, Model model) throws ParseException {
-        List<Prenotazione> reservations = prenotazioneService.filter(field, value);
-        model.addAttribute("reservations", reservations);
         return "reservations";
     }
 
     @RequestMapping(value = "/addReservation", method = RequestMethod.GET)
     public String addReservation(HttpSession session, Model model){
         PrenotazioneDTO p = new PrenotazioneDTO();
-        Utente u = utenteService.getUserFromId(Integer.parseInt(session.getAttribute("myid").toString()));
+        Utente u = utenteService.getUserFromId((Integer) session.getAttribute("myid"));
         model.addAttribute("newReservation", p);
         model.addAttribute("myid", session.getAttribute("myid"));
         model.addAttribute("utente", u);

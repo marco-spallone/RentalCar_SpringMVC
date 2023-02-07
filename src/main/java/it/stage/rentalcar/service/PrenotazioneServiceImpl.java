@@ -41,14 +41,10 @@ public class PrenotazioneServiceImpl implements PrenotazioneService {
     public Map<String, Date> parseDate(PrenotazioneDTO prenotazioneDTO) throws ParseException {
         Map<String, Date> dates = new HashMap<>();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        if(prenotazioneDTO.getDataInizio()!=null){
-            Date inizio = sdf.parse(prenotazioneDTO.getDataInizio());
-            dates.put("inizio", inizio);
-        }
-        if(prenotazioneDTO.getDataFine()!=null){
-            Date fine = sdf.parse(prenotazioneDTO.getDataFine());
-            dates.put("fine", fine);
-        }
+        Date inizio = sdf.parse(prenotazioneDTO.getDataInizio());
+        Date fine = sdf.parse(prenotazioneDTO.getDataFine());
+        dates.put("inizio", inizio);
+        dates.put("fine", fine);
         return dates;
     }
     @Override
@@ -73,11 +69,6 @@ public class PrenotazioneServiceImpl implements PrenotazioneService {
         } else {
             return true;
         }
-    }
-
-    @Override
-    public List<Prenotazione> filter(String field, String value) throws ParseException {
-        return prenotazioneRepository.filter(field, value);
     }
 
     @Override

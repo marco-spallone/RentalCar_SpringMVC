@@ -21,18 +21,7 @@
         <div class="mx-auto mt-5 col-md-6 col-sm-6">
             <h3 class="page-title">Customers</h3>
             <div class="mt-4 mb-4"><a href="<spring:url value="/addCustomer" />">
-                <button class="btn btn-outline-info"><i class="fa-solid fa-user-plus fa-lg" ></i> Aggiungi customer</button></a></div>
-            <div class="form-horizontal"><div class="form-group mt-2 mb-2">
-                <form method="post" action="filterCustomers">
-                    <select name="field" class="form-select">
-                        <option value="nome">Nome</option>
-                        <option value="cognome">Cognome</option>
-                    </select>
-                    <input name="value" id="value" type="text" class="form-control mt-2" placeholder="Filtra per..."/>
-                    <button type="submit" class="mt-3 btn btn-outline-primary"><i class="fa-solid fa-filter"></i></button>
-                    <a href="customers"><button type="button" class="mt-3 btn btn-outline-danger"><i class="fa-solid fa-x"></i></button></a>
-                </form>
-            </div></div>
+                <button class="btn"><i class="fa-solid fa-user-plus fa-lg" style="color: dodgerblue"></i></button></a></div>
             <div id="tabUtenti">
                 <table class="table table-striped table-bordered" id="tab">
                     <thead>

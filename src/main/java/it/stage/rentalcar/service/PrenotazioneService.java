@@ -12,7 +12,6 @@ public interface PrenotazioneService {
     List<Prenotazione> getReservationsForUser(int id);
     Prenotazione getReservationFromId(int id);
     List<Prenotazione> getReservationsBetweenDates(Date inizio, Date fine);
-    List<Prenotazione> filter(String field, String value) throws ParseException;
     Map<String, Date> parseDate(PrenotazioneDTO prenotazioneDTO) throws ParseException;
     Prenotazione checkDate(PrenotazioneDTO prenotazioneDTO) throws Exception;
     boolean checkModificable(Prenotazione p) throws Exception;
