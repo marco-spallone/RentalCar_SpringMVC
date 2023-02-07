@@ -14,6 +14,8 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;
 import javax.persistence.criteria.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -53,6 +55,27 @@ public class PrenotazioneRepositoryImpl implements PrenotazioneRepository {
         criteria.select(root).where(builder.or(p1, p2, p3));
         List<Prenotazione> reservations = session.createQuery(criteria).list();
         return reservations;
+    }
+
+    @Override
+    public List<Prenotazione> filter(String field, String value) throws ParseException {
+        if(field.equals("auto.targa")){
+            try(Session session= HibernateUtil.getSessionFactory().openSession()){
+                return session.createQuery("SELECT a FROM Prenotazione a WHERE a."+field+"=:value", Prenotazione.class)
+                        .setParameter("value", value).list();
+            } catch (Exception e){
+                System.out.println(e);
+            }
+        } else {
+            Date filter = new SimpleDateFormat("yyyy-MM-dd").parse(value);
+            try(Session session= HibernateUtil.getSessionFactory().openSession()){
+                return session.createQuery("SELECT a FROM Prenotazione a WHERE a."+field+"=:filter", Prenotazione.class)
+                        .setParameter("filter", filter).list();
+            } catch (Exception e){
+                System.out.println(e);
+            }
+        }
+        return null;
     }
 
     @Override

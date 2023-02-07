@@ -11,6 +11,17 @@
   <script src="https://kit.fontawesome.com/6b1574191b.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+<script type="text/javascript">
+  function changeType(selected)
+  {
+    if(selected === "auto.targa")
+      document.getElementById('value').setAttribute("type", "text");
+    else
+      document.getElementById('value').setAttribute("type", "date");
+  }
+</script>
+
 <c:choose>
   <c:when test="${isAdmin=='true'}">
     <c:set var="url1" value="customers" />
@@ -29,14 +40,34 @@
   <div class="row">
     <div class="mx-auto mt-5 col-sm-8">
       <h3>Prenotazioni effettuate</h3>
-      <div class="row"><div class="mt-4 mb-4 col-sm-1">
+      <div class="row"><div class="mt-4 mb-4 col-sm-6">
         <c:choose>
           <c:when test="${isAdmin=='true'}" />
           <c:otherwise>
-            <a href="<spring:url value="/addReservation" /> "><button class="btn">
-              <i class="fa-regular fa-calendar-plus fa-lg" style="color: dodgerblue"></i></button></a>
+            <a href="<spring:url value="/addReservation" /> "><button class="btn btn-outline-info">
+              <i class="fa-regular fa-calendar-plus fa-lg"></i> Aggiungi prenotazione</button></a>
           </c:otherwise>
         </c:choose>
+      </div></div>
+      <div class="form-horizontal"><div class="form-group mt-2 mb-2">
+        <form method="post" action="filterReservations">
+          <select name="field" class="form-select" onchange="changeType(this.value)">
+            <option value="dataInizio" selected>Data inizio</option>
+            <option value="dataFine">Data fine</option>
+            <option value="auto.targa">Targa auto</option>
+          </select>
+          <input name="value" id="value" type="date" class="form-control mt-2"/>
+          <button type="submit" class="mt-3 btn btn-outline-primary"><i class="fa-solid fa-filter"></i></button>
+          <c:choose>
+            <c:when test="${isAdmin=='true'}">
+              <a href="customers"><button type="button" class="mt-3 btn btn-outline-danger"><i class="fa-solid fa-x"></i></button></a>
+            </c:when>
+            <c:otherwise>
+              <a href="viewReservations?=isAdmin=false&myid=${myid}&id=${id}"><button type="button" class="mt-3 btn btn-outline-danger"><i class="fa-solid fa-x"></i></button></a>
+            </c:otherwise>
+          </c:choose>
+
+        </form>
       </div></div>
       <div id="tabPrenotazioni">
         <table class="table table-striped table-bordered" id="tab">
@@ -53,7 +84,7 @@
             <tr>
               <td>${reservation.dataInizio}</td>
               <td>${reservation.dataFine}</td>
-              <td>${reservation.auto.marca} ${reservation.auto.modello}</td>
+              <td>${reservation.auto.targa}</td>
               <td>
                 <c:choose>
                   <c:when test="${reservation.confermata==true}"><i class="fa-solid fa-check"></i></c:when>
@@ -72,8 +103,8 @@
               </td>
               <c:choose>
                 <c:when test="${isAdmin=='false'}">
-                  <td><a href="editReservation?id=${reservation.idPrenotazione}">Modifica</a></td>
-                  <td><a href="deleteReservation?id=${reservation.idPrenotazione}">Elimina</a></td>
+                  <td><a href="editReservation?id=${reservation.idPrenotazione}"><button class="mx-auto btn btn-outline-warning"><i class="fa-sharp fa-solid fa-pen fa-lg"></i> Modifica</button></a></td>
+                  <td><a href="deleteReservation?id=${reservation.idPrenotazione}"><button class="btn btn-outline-danger"><i class="fa-solid fa-trash fa-lg"></i> Elimina</button></a></td>
                 </c:when>
                 <c:otherwise></c:otherwise>
               </c:choose>

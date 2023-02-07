@@ -9,23 +9,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49c873af-4aaa-48a2-b84f-678c0f7086f6" name="Changes" comment="-Implementazione funzione per visualizzare auto disponibili tramite Criteria.&#10;-Implementazione di alcune funzioni necessarie alla manipolazione dei dai nei service.&#10;-Completamento funzione di aggiunta prenotazione.">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userProfile.jsp" afterDir="false" />
+    <list default="true" id="49c873af-4aaa-48a2-b84f-678c0f7086f6" name="Changes" comment="-Implementazione HttpSession e inserimento parametro id e isAdmin.&#10;-Implementazione validazione prenotazioni per l'utente admin.&#10;-Precompilazione campi nella modifica di un'entità.&#10;-Implementazione profilo utente.&#10;-Modifiche all'interfaccia grafica tramite Bootstrap e Font Awesome.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/AutoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/AutoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/PrenotazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/PrenotazioneController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/UtenteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/UtenteController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/UtenteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/UtenteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/UtenteRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/UtenteRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/carFleet.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/carFleet.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/carForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/carForm.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customerForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customerForm.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customers.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customers.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reservationForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reservationForm.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reservations.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reservations.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/selectCar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/selectCar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userProfile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userProfile.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,6 +202,7 @@
       <workItem from="1675272182515" duration="320000" />
       <workItem from="1675325556515" duration="26637000" />
       <workItem from="1675413240093" duration="23114000" />
+      <workItem from="1675757897583" duration="10728000" />
     </task>
     <task id="LOCAL-00001" summary="-Creazione progetto e definizione delle dipendenze Maven.">
       <created>1674837981489</created>
@@ -260,7 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675692533696</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="-Implementazione HttpSession e inserimento parametro id e isAdmin.&#10;-Implementazione validazione prenotazioni per l'utente admin.&#10;-Precompilazione campi nella modifica di un'entità.&#10;-Implementazione profilo utente.&#10;-Modifiche all'interfaccia grafica tramite Bootstrap e Font Awesome.">
+      <created>1675702777794</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1675702777794</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,7 +290,8 @@
     <MESSAGE value="-Correzione operazioni CRUD per l'utente admin.&#10;-Implementazione aggiunta prenotazione.&#10;-Implementazione DTO per gestire le date inserite dall'utente.&#10;-Implementazione mapper per mappare i dati dell'entità Prenotazione.&#10;-Implementazione dei redirect home nella navbar.&#10;-Correzioni varie." />
     <MESSAGE value="-Implementazione operazione elimina prenotazione.&#10;-Implementazione controllo sulle date della prenotazione per eventuale modifica.&#10;-Modifica alla vista delle pagine JSP." />
     <MESSAGE value="-Implementazione funzione per visualizzare auto disponibili tramite Criteria.&#10;-Implementazione di alcune funzioni necessarie alla manipolazione dei dai nei service.&#10;-Completamento funzione di aggiunta prenotazione." />
-    <option name="LAST_COMMIT_MESSAGE" value="-Implementazione funzione per visualizzare auto disponibili tramite Criteria.&#10;-Implementazione di alcune funzioni necessarie alla manipolazione dei dai nei service.&#10;-Completamento funzione di aggiunta prenotazione." />
+    <MESSAGE value="-Implementazione HttpSession e inserimento parametro id e isAdmin.&#10;-Implementazione validazione prenotazioni per l'utente admin.&#10;-Precompilazione campi nella modifica di un'entità.&#10;-Implementazione profilo utente.&#10;-Modifiche all'interfaccia grafica tramite Bootstrap e Font Awesome." />
+    <option name="LAST_COMMIT_MESSAGE" value="-Implementazione HttpSession e inserimento parametro id e isAdmin.&#10;-Implementazione validazione prenotazioni per l'utente admin.&#10;-Precompilazione campi nella modifica di un'entità.&#10;-Implementazione profilo utente.&#10;-Modifiche all'interfaccia grafica tramite Bootstrap e Font Awesome." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

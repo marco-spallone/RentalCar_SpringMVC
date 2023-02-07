@@ -21,7 +21,7 @@
 </c:choose>
 <jsp:include page="navbar.jsp">
   <jsp:param name="url1" value="${url1}" />
-  <jsp:param name="url2" value="cars?isAdmin=false"/>
+  <jsp:param name="url2" value="cars?isAdmin=${newCustomer.isAdmin}"/>
   <jsp:param name="url3" value="#"/>
 </jsp:include>
 
