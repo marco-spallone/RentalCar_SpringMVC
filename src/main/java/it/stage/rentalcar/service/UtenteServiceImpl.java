@@ -21,6 +21,12 @@ public class UtenteServiceImpl implements UtenteService {
     }
     @Override
     public Utente getUserFromId(int id){ return utenteRepository.getUserFromId(id); }
+
+    @Override
+    public List<Utente> filter(String field, String value) {
+        return utenteRepository.filter(field, value);
+    }
+
     public void insOrUpCustomer(Utente utente) {
         utenteRepository.insOrUpCustomer(utente);
     }

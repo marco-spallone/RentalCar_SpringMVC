@@ -32,6 +32,16 @@ public class UtenteRepositoryImpl implements UtenteRepository{
     }
 
     @Override
+    public List<Utente> filter(String field, String value) {
+        try(Session session=HibernateUtil.getSessionFactory().openSession()){
+            return session.createQuery("SELECT a FROM Utente a WHERE a."+field+"=:value", Utente.class).setParameter("value", value).list();
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    @Override
     public void insOrUpCustomer(Utente utente) {
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
             session.beginTransaction();

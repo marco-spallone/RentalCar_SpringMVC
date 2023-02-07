@@ -9,23 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49c873af-4aaa-48a2-b84f-678c0f7086f6" name="Changes" comment="-Implementazione HttpSession e inserimento parametro id e isAdmin.&#10;-Implementazione validazione prenotazioni per l'utente admin.&#10;-Precompilazione campi nella modifica di un'entità.&#10;-Implementazione profilo utente.&#10;-Modifiche all'interfaccia grafica tramite Bootstrap e Font Awesome.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/PrenotazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/PrenotazioneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/UtenteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/UtenteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/UtenteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/UtenteRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/UtenteRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/UtenteRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/carFleet.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/carFleet.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customers.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customers.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reservations.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reservations.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userProfile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userProfile.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="49c873af-4aaa-48a2-b84f-678c0f7086f6" name="Changes" comment="-Implementazione filtri.&#10;-Modifiche all'interfaccia grafica con Bootstrap e Font Awesome" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,6 +28,19 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="5c5b12c4-d94f-49d3-85da-4e8b4c8cc802" />
+        <option name="url" value="https://github.com/marcospallonesi2001/RentalCar_SpringMVC.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -267,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675702777794</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="-Implementazione filtri.&#10;-Modifiche all'interfaccia grafica con Bootstrap e Font Awesome">
+      <created>1675770909496</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1675770909496</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,6 +285,17 @@
     <option featureType="dependencySupport" implementationName="java:org.hibernate:hibernate-core" />
     <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="-Creazione progetto e definizione delle dipendenze Maven." />
     <MESSAGE value="-Inizializzazione progetto, controller e tiles." />
@@ -291,7 +306,9 @@
     <MESSAGE value="-Implementazione operazione elimina prenotazione.&#10;-Implementazione controllo sulle date della prenotazione per eventuale modifica.&#10;-Modifica alla vista delle pagine JSP." />
     <MESSAGE value="-Implementazione funzione per visualizzare auto disponibili tramite Criteria.&#10;-Implementazione di alcune funzioni necessarie alla manipolazione dei dai nei service.&#10;-Completamento funzione di aggiunta prenotazione." />
     <MESSAGE value="-Implementazione HttpSession e inserimento parametro id e isAdmin.&#10;-Implementazione validazione prenotazioni per l'utente admin.&#10;-Precompilazione campi nella modifica di un'entità.&#10;-Implementazione profilo utente.&#10;-Modifiche all'interfaccia grafica tramite Bootstrap e Font Awesome." />
-    <option name="LAST_COMMIT_MESSAGE" value="-Implementazione HttpSession e inserimento parametro id e isAdmin.&#10;-Implementazione validazione prenotazioni per l'utente admin.&#10;-Precompilazione campi nella modifica di un'entità.&#10;-Implementazione profilo utente.&#10;-Modifiche all'interfaccia grafica tramite Bootstrap e Font Awesome." />
+    <MESSAGE value="Revert &quot;-Implementazione HttpSession e inserimento parametro id e isAdmin. -Implementazione validazione prenotazioni per l'utente admin. -Precompilazione campi nella modifica di un'entità. -Implementazione profilo utente. -Modifiche all'interfaccia grafica tramite Bootstrap e Font Awesome.&quot;&#10;&#10;This reverts commit cab5de33" />
+    <MESSAGE value="-Implementazione filtri.&#10;-Modifiche all'interfaccia grafica con Bootstrap e Font Awesome" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Implementazione filtri.&#10;-Modifiche all'interfaccia grafica con Bootstrap e Font Awesome" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
