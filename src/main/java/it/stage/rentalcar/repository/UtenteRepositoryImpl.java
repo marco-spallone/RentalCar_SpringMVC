@@ -32,6 +32,16 @@ public class UtenteRepositoryImpl implements UtenteRepository{
     }
 
     @Override
+    public Utente getUserFromUsername(String username) {
+        try(Session session=HibernateUtil.getSessionFactory().openSession()){
+            return session.createQuery("SELECT a FROM Utente a WHERE a.username=:username", Utente.class).setParameter("username", username).getSingleResult();
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    @Override
     public List<Utente> filter(String field, String value) {
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
             return session.createQuery("SELECT a FROM Utente a WHERE a."+field+"=:value", Utente.class).setParameter("value", value).list();

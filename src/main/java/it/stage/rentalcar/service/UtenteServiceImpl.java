@@ -23,10 +23,14 @@ public class UtenteServiceImpl implements UtenteService {
     public Utente getUserFromId(int id){ return utenteRepository.getUserFromId(id); }
 
     @Override
+    public Utente getUserFromUsername(String username) {
+        return utenteRepository.getUserFromUsername(username);
+    }
+
+    @Override
     public List<Utente> filter(String field, String value) {
         return utenteRepository.filter(field, value);
     }
-
     public void insOrUpCustomer(Utente utente) {
         utenteRepository.insOrUpCustomer(utente);
     }

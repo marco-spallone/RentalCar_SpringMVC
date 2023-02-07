@@ -27,4 +27,10 @@
     <definition name="selectCar" extends="baseLayout">
         <put-attribute name="content" value="/WEB-INF/views/selectCar.jsp"/>
     </definition>
+    <definition name="baseLogin" template="/WEB-INF/layouts/templates/baseLogin.jsp">
+        <put-attribute name="content" value="" />
+    </definition>
+    <definition name="login" extends="baseLogin">
+        <put-attribute name="content" value="/WEB-INF/views/login.jsp"/>
+    </definition>
 </tiles-definitions>
