@@ -10,7 +10,7 @@ import java.util.List;
 public class Utente implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_utente")
     private int idUtente;
 

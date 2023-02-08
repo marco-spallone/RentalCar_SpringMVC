@@ -29,6 +29,7 @@
         </ul>
     </div>
     <div class="nav navbar-nav navbar-right">
+        <a href="${param.url4}" class="navbar-brand"><button type="button" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Esci</button></a>
     </div>
 </nav>
 

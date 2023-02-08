@@ -30,14 +30,11 @@ public class PrenotazioneController {
     }
 
     @RequestMapping(value = "/viewReservations", method = RequestMethod.GET)
-    public String viewReservations(@RequestParam("isAdmin") boolean isAdmin, @RequestParam("id") int id, @RequestParam("myid") int myid,
-                                   HttpSession session, Model model){
+    public String viewReservations(@RequestParam("id") int id, HttpSession session, Model model){
         List<Prenotazione> reservations = prenotazioneService.getReservationsForUser(id);
         model.addAttribute("reservations", reservations);
-        model.addAttribute("isAdmin", isAdmin);
-        session.setAttribute("myid", myid);
+        model.addAttribute("isAdmin", session.getAttribute("isAdmin"));
         session.setAttribute("id", id);
-        session.setAttribute("isAdmin", isAdmin);
         return "reservations";
     }
 
@@ -76,7 +73,7 @@ public class PrenotazioneController {
     @RequestMapping(value = "/freeAuto", method = RequestMethod.POST)
     public String insReservation(HttpSession session, @ModelAttribute("newReservation") PrenotazioneDTO prenotazioneDTO) throws Exception {
         prenotazioneService.insOrUpReservation(prenotazioneService.checkDate(prenotazioneDTO));
-        return "redirect:/viewReservations?isAdmin=false&id="+session.getAttribute("myid")+"&myid="+session.getAttribute("myid");
+        return "redirect:/viewReservations?id="+session.getAttribute("id");
     }
 
     @RequestMapping(value = "/editReservation", method = RequestMethod.GET)
@@ -104,18 +101,18 @@ public class PrenotazioneController {
     @RequestMapping(value = "approveReservation", method = RequestMethod.GET)
     public String approveReservation(HttpSession session, @RequestParam("id") int id){
         prenotazioneService.updateStatus(true, id);
-        return "redirect:/viewReservations?isAdmin=true&myid="+session.getAttribute("myid")+"&id="+session.getAttribute("id");
+        return "redirect:/viewReservations?id="+session.getAttribute("id");
     }
 
     @RequestMapping(value = "declineReservation", method = RequestMethod.GET)
     public String declineReservation(HttpSession session, @RequestParam("id") int idPren){
         prenotazioneService.updateStatus(false, idPren);
-        return "redirect:/viewReservations?isAdmin=true&myid="+session.getAttribute("myid")+"&id="+session.getAttribute("id");
+        return "redirect:/viewReservations?id="+session.getAttribute("id");
     }
 
     @RequestMapping(value = "deleteReservation", method = RequestMethod.GET)
     public String deleteReservation(HttpSession session, @RequestParam("id") int id){
         prenotazioneService.delReservation(id);
-        return "redirect:/viewReservations?isAdmin=false&myid="+session.getAttribute("myid")+"&id="+session.getAttribute("myid");
+        return "redirect:/viewReservations?id="+session.getAttribute("id");
     }
 }

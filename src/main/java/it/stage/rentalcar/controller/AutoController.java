@@ -23,11 +23,11 @@ public class AutoController {
     }
 
     @RequestMapping(value = "/cars", method = RequestMethod.GET)
-    public String getCars(HttpSession session, @RequestParam("isAdmin") boolean isAdmin, Model model){
+    public String getCars(HttpSession session, Model model){
         List<Auto> cars = autoService.getCars();
         model.addAttribute("cars",  cars);
         model.addAttribute("myid", session.getAttribute("myid"));
-        model.addAttribute("isAdmin", isAdmin);
+        model.addAttribute("isAdmin", session.getAttribute("isAdmin"));
         return "carFleet";
     }
 
@@ -41,15 +41,13 @@ public class AutoController {
     @RequestMapping(value = "/addCar", method = RequestMethod.POST)
     public String insCar(@ModelAttribute Auto auto){
         autoService.insOrUpCar(auto);
-        return "redirect:/cars?isAdmin=true";
+        return "redirect:/cars";
     }
 
     @RequestMapping(value = "/editCar", method = RequestMethod.GET)
     public String editCar(@RequestParam("id") int id, Model model){
-        Auto newA = new Auto();
-        Auto actualA = autoService.getCarFromId(id);
+        Auto newA = autoService.getCarFromId(id);
         model.addAttribute("newAuto", newA);
-        model.addAttribute("actualAuto", actualA);
         model.addAttribute("id", id);
         return "carForm";
     }
@@ -57,12 +55,12 @@ public class AutoController {
     @RequestMapping(value = "/editCar", method = RequestMethod.POST)
     public String upCar(@ModelAttribute Auto auto){
         autoService.insOrUpCar(auto);
-        return "redirect:/cars?isAdmin=true";
+        return "redirect:/cars";
     }
 
     @RequestMapping(value = "/deleteCar", method = RequestMethod.GET)
     public String deleteCar(@RequestParam("id") int id){
         autoService.deleteCar(id);
-        return "redirect:/cars?isAdmin=true";
+        return "redirect:/cars";
     }
 }

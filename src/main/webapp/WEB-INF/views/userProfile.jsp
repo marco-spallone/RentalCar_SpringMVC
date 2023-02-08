@@ -16,13 +16,14 @@
     <c:set var="url1" value="customers" />
   </c:when>
   <c:otherwise>
-    <c:set var="url1" value="viewReservations?isAdmin=false&myid=${myid}&id=${myid}" />
+    <c:set var="url1" value="viewReservations?id=${myid}" />
   </c:otherwise>
 </c:choose>
 <jsp:include page="navbar.jsp">
   <jsp:param name="url1" value="${url1}" />
-  <jsp:param name="url2" value="cars?isAdmin=${newCustomer.isAdmin}"/>
+  <jsp:param name="url2" value="cars"/>
   <jsp:param name="url3" value="#"/>
+  <jsp:param name="url4" value="login/form"/>
 </jsp:include>
 
 <div class="container">

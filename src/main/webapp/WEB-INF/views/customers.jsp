@@ -13,8 +13,9 @@
 </head>
 <jsp:include page="navbar.jsp">
     <jsp:param name="url1" value="customers" />
-    <jsp:param name="url2" value="cars?isAdmin=true"/>
+    <jsp:param name="url2" value="cars"/>
     <jsp:param name="url3" value="userProfile"/>
+    <jsp:param name="url4" value="login/form"/>
 </jsp:include>
 <div class="container">
     <div class="row">
@@ -47,7 +48,7 @@
                             <td>${customer.nome}</td>
                             <td>${customer.cognome}</td>
                             <td><a href="<spring:url value='/editCustomer?id=${customer.idUtente}' />"><button class="mx-auto btn btn-outline-warning"><i class="fa-sharp fa-solid fa-pen fa-lg"></i> Modifica</button></a></td>
-                            <td><a href="<spring:url value='/viewReservations?isAdmin=true&myid=${myid}&id=${customer.idUtente}' />"><button class="btn btn-outline-info"><i class="fa-solid fa-calendar fa-lg"></i> Prenotazioni</button></a></td>
+                            <td><a href="<spring:url value='/viewReservations?id=${customer.idUtente}' />"><button class="btn btn-outline-info"><i class="fa-solid fa-calendar fa-lg"></i> Prenotazioni</button></a></td>
                             <td><a href="<spring:url value='/deleteCustomer?id=${customer.idUtente}' />"><button class="btn btn-outline-danger"><i class="fa-solid fa-trash fa-lg"></i> Elimina</button></a></td>
                         </tr>
                     </c:forEach>

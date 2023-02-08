@@ -13,8 +13,9 @@
 <body>
 <jsp:include page="navbar.jsp">
     <jsp:param name="url1" value="customers" />
-    <jsp:param name="url2" value="cars?isAdmin=true"/>
+    <jsp:param name="url2" value="cars"/>
     <jsp:param name="url3" value="userProfile"/>
+    <jsp:param name="url4" value="login/form"/>
 </jsp:include>
 
 <div class="container">
@@ -31,28 +32,28 @@
                     </c:choose>
                     <div class="mb-3">
                         <label for="marca" class="form-label">Marca: </label>
-                        <form:input type="text" class="form-control" id="marca" path="marca" value="" />
+                        <form:input type="text" class="form-control" id="marca" path="marca" value="${newAuto.marca}" />
                     </div>
                     <div class="mb-3">
                         <label for="modello" class="form-label">Modello: </label>
-                        <form:input type="text" class="form-control" id="modello" path="modello" value="" />
+                        <form:input type="text" class="form-control" id="modello" path="modello" value="${newAuto.modello}" />
                     </div>
                     <div class="mb-3">
                         <label for="anno" class="form-label">Anno: </label>
-                        <form:input type="number" class="form-control" id="anno" path="anno" value="" />
+                        <form:input type="number" class="form-control" id="anno" path="anno" value="${newAuto.anno}" />
                     </div>
                     <div class="mb-3">
                         <label for="prezzo" class="form-label">Prezzo: </label>
-                        <form:input type="number" class="form-control" id="prezzo" path="prezzo" value="" />
+                        <form:input type="number" class="form-control" id="prezzo" path="prezzo" value="${newAuto.prezzo}" />
                     </div>
                     <div class="mb-3">
                         <label for="targa" class="form-label">Targa: </label>
-                        <form:input type="text" class="form-control" id="targa" path="targa" value="" />
+                        <form:input type="text" class="form-control" id="targa" path="targa" value="${newAuto.targa}" />
                     </div>
                     <button type="submit" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
                         <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
                     </svg>Conferma</button>
-                    <a href="<spring:url value="/cars?isAdmin=true" />"><button type="button" class="btn btn-warning">Annulla</button></a>
+                    <a href="<spring:url value="/cars" />"><button type="button" class="btn btn-warning">Annulla</button></a>
                 </form:form>
             </div>
         </div>

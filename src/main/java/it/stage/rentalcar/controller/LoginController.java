@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/login/form")
 public class LoginController {
     @GetMapping
-    public String getLogin(Model model){
-        System.out.println("nella get");
+    public String getLogin(){
         return "login";
     }
 }

@@ -12,7 +12,7 @@ import java.util.*;
 public class Prenotazione {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_prenotazione")
     private int idPrenotazione;
 

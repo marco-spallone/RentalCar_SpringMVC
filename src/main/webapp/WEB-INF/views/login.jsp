@@ -24,7 +24,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="mx-auto mt-3 mb-3 login-form col-sm-6 col-md-6">
+    <div class="mx-auto mt-3 mb-3 login-form col-sm-3 col-md-3">
       <c:url var="loginUrl" value="/login" />
       <form action="${loginUrl}" method="post">
         <c:if test="${param.error!=null}">
@@ -44,15 +44,13 @@
         </c:if>
 
         <div class="input-group input-sm">
-          <label class="input-group-addon" for="username"><i class="fa fa-user"></i></label>
           <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
         </div>
         <div class="input-group input-sm">
-          <label class="input-group-addon" for="password"><i class="fa fa-user"></i></label>
-          <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+          <input type="password" class="mt-1 form-control" id="password" name="password" placeholder="Password" required>
         </div>
         <div class="form-actions">
-          <input type="submit" class="btn- btn-block btn-success btn-default" value="LOGIN" />
+          <button type="submit" class="mt-3 btn btn-block btn-success btn-default">LOGIN</button>
         </div>
       </form>
     </div>

@@ -27,14 +27,15 @@
     <c:set var="url1" value="customers" />
   </c:when>
   <c:otherwise>
-    <c:set var="url1" value="viewReservations?isAdmin=false&myid=${myid}&id=${myid}" />
+    <c:set var="url1" value="viewReservations?id=${myid}" />
   </c:otherwise>
 </c:choose>
 
 <jsp:include page="navbar.jsp">
   <jsp:param name="url1" value="${url1}" />
-  <jsp:param name="url2" value="cars?isAdmin=${isAdmin}"/>
+  <jsp:param name="url2" value="cars"/>
   <jsp:param name="url3" value="userProfile"/>
+  <jsp:param name="url4" value="login/form"/>
 </jsp:include>
 <div class="container">
   <div class="row">
@@ -58,15 +59,7 @@
           </select>
           <input name="value" id="value" type="date" class="form-control mt-2"/>
           <button type="submit" class="mt-3 btn btn-outline-primary"><i class="fa-solid fa-filter"></i></button>
-          <c:choose>
-            <c:when test="${isAdmin=='true'}">
-              <a href="customers"><button type="button" class="mt-3 btn btn-outline-danger"><i class="fa-solid fa-x"></i></button></a>
-            </c:when>
-            <c:otherwise>
-              <a href="viewReservations?=isAdmin=false&myid=${myid}&id=${id}"><button type="button" class="mt-3 btn btn-outline-danger"><i class="fa-solid fa-x"></i></button></a>
-            </c:otherwise>
-          </c:choose>
-
+          <a href="viewReservations?id=${id}"><button type="button" class="mt-3 btn btn-outline-danger"><i class="fa-solid fa-x"></i></button></a>
         </form>
       </div></div>
       <div id="tabPrenotazioni">

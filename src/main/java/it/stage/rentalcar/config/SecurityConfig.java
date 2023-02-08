@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -76,17 +77,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(ADMIN_CLIENTI_MATCHER).access("hasRole('ADMIN')").and()
                 .formLogin().loginPage("/login/form").loginProcessingUrl("/login")
                 .usernameParameter("username").passwordParameter("password")
-                .failureUrl("/login/form?error").successHandler(new AuthenticationSuccessHandler() {
-                    @Override
-                    public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-                        String username = "";
-                        if(authentication.getPrincipal() instanceof Principal) {
-                            username = ((Principal)authentication.getPrincipal()).getName();
-                        }else {
-                            username = ((User)authentication.getPrincipal()).getUsername();
-                        }
-                    }
-                }).defaultSuccessUrl("/index")
+                .failureUrl("/login/form?error").defaultSuccessUrl("/index")
                 .and().exceptionHandling().accessDeniedPage("/login/form?forbidden")
                 .and().logout().logoutUrl("/login/form?logout")
                 .and().csrf().disable();

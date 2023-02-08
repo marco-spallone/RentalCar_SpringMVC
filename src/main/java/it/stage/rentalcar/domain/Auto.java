@@ -9,7 +9,7 @@ import java.util.List;
 public class Auto {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id_auto")
     private int idAuto;
 

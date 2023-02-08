@@ -47,7 +47,7 @@ public class UtenteController {
     @RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
     public String insCustomer(@ModelAttribute("newCustomer") Utente utente){
         utenteService.insOrUpCustomer(utente);
-        return "redirect:/customers?isAdmin=true";
+        return "redirect:/customers";
     }
 
     @RequestMapping(value = "/editCustomer", method = RequestMethod.GET)
@@ -62,7 +62,7 @@ public class UtenteController {
     @RequestMapping(value = "/editCustomer", method = RequestMethod.POST)
     public String upCustomer(@ModelAttribute("newCustomer") Utente utente){
         utenteService.insOrUpCustomer(utente);
-        return "redirect:/customers?isAdmin=true";
+        return "redirect:/customers";
     }
 
     @RequestMapping(value = "/userProfile", method = RequestMethod.GET)
@@ -81,6 +81,6 @@ public class UtenteController {
     @RequestMapping(value = "/deleteCustomer", method = RequestMethod.GET)
     public String deleteCustomer(@RequestParam("id") int id){
         utenteService.delCustomer(id);
-        return "redirect:/customers?isAdmin=true";
+        return "redirect:/customers";
     }
 }
