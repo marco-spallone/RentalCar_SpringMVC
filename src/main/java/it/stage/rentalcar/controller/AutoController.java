@@ -4,16 +4,15 @@ import it.stage.rentalcar.domain.Auto;
 import it.stage.rentalcar.service.AutoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/cars")
 public class AutoController {
 
     private final AutoService autoService;
@@ -22,7 +21,7 @@ public class AutoController {
         this.autoService=autoService;
     }
 
-    @RequestMapping(value = "/cars", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public String getCars(HttpSession session, Model model){
         List<Auto> cars = autoService.getCars();
         model.addAttribute("cars",  cars);
@@ -31,34 +30,34 @@ public class AutoController {
         return "carFleet";
     }
 
-    @RequestMapping(value = "/addCar", method = RequestMethod.GET)
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addCar(Model model){
         Auto a = new Auto();
         model.addAttribute("newAuto", a);
         return "carForm";
     }
 
-    @RequestMapping(value = "/addCar", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String insCar(@ModelAttribute Auto auto){
         autoService.insOrUpCar(auto);
         return "redirect:/cars";
     }
 
-    @RequestMapping(value = "/editCar", method = RequestMethod.GET)
-    public String editCar(@RequestParam("id") int id, Model model){
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public String editCar(@RequestParam("id") Integer id, Model model){
         Auto newA = autoService.getCarFromId(id);
         model.addAttribute("newAuto", newA);
         model.addAttribute("id", id);
         return "carForm";
     }
 
-    @RequestMapping(value = "/editCar", method = RequestMethod.POST)
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String upCar(@ModelAttribute Auto auto){
         autoService.insOrUpCar(auto);
         return "redirect:/cars";
     }
 
-    @RequestMapping(value = "/deleteCar", method = RequestMethod.GET)
+    @PostMapping(value = "/delete")
     public String deleteCar(@RequestParam("id") int id){
         autoService.deleteCar(id);
         return "redirect:/cars";

@@ -14,11 +14,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/reservations")
 public class PrenotazioneController {
     private final PrenotazioneService prenotazioneService;
     private final UtenteService utenteService;
@@ -29,23 +28,23 @@ public class PrenotazioneController {
         this.autoService=autoService;
     }
 
-    @RequestMapping(value = "/viewReservations", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public String viewReservations(@RequestParam("id") int id, HttpSession session, Model model){
         List<Prenotazione> reservations = prenotazioneService.getReservationsForUser(id);
         model.addAttribute("reservations", reservations);
         model.addAttribute("isAdmin", session.getAttribute("isAdmin"));
-        session.setAttribute("id", id);
+        session.setAttribute("idUser", id);
         return "reservations";
     }
 
-    @RequestMapping(value = "/filterReservations", method = RequestMethod.POST)
+    @RequestMapping(value = "/filter", method = RequestMethod.POST)
     public String filter(@RequestParam("field") String field, @RequestParam("value") String value, Model model) throws ParseException {
         List<Prenotazione> reservations = prenotazioneService.filter(field, value);
         model.addAttribute("reservations", reservations);
         return "reservations";
     }
 
-    @RequestMapping(value = "/addReservation", method = RequestMethod.GET)
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addReservation(HttpSession session, Model model){
         PrenotazioneDTO p = new PrenotazioneDTO();
         Utente u = utenteService.getUserFromId(Integer.parseInt(session.getAttribute("myid").toString()));
@@ -55,13 +54,13 @@ public class PrenotazioneController {
         return "reservationForm";
     }
 
-    @RequestMapping(value = "/addReservation", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String getFreeCars(@ModelAttribute("newReservation") PrenotazioneDTO prenotazioneDTO, RedirectAttributes redirectAttributes){
         redirectAttributes.addFlashAttribute("newReservation", prenotazioneDTO);
         return "redirect:/freeAuto";
     }
 
-    @RequestMapping(value = "/freeAuto", method = RequestMethod.GET)
+    @RequestMapping(value = "/freeCars", method = RequestMethod.GET)
     public String chooseCar(@ModelAttribute("newReservation") PrenotazioneDTO prenotazioneDTO, Model model) throws ParseException {
         List<Prenotazione> confirmed = prenotazioneService.getReservationsBetweenDates(prenotazioneService.parseDate(prenotazioneDTO).get("inizio"), prenotazioneService.parseDate(prenotazioneDTO).get("fine"));
         List<Auto> freeCars = autoService.getFreeCars(confirmed);
@@ -70,13 +69,13 @@ public class PrenotazioneController {
         return "selectCar";
     }
 
-    @RequestMapping(value = "/freeAuto", method = RequestMethod.POST)
+    @RequestMapping(value = "/freeCars", method = RequestMethod.POST)
     public String insReservation(HttpSession session, @ModelAttribute("newReservation") PrenotazioneDTO prenotazioneDTO) throws Exception {
         prenotazioneService.insOrUpReservation(prenotazioneService.checkDate(prenotazioneDTO));
-        return "redirect:/viewReservations?id="+session.getAttribute("id");
+        return "redirect:/reservations?id="+session.getAttribute("idUser");
     }
 
-    @RequestMapping(value = "/editReservation", method = RequestMethod.GET)
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String editReservation(HttpSession session, @RequestParam("id") int id, Model model) throws Exception {
         Prenotazione actualP = prenotazioneService.getReservationFromId(id);
         if(prenotazioneService.checkModificable(actualP)){
@@ -91,28 +90,28 @@ public class PrenotazioneController {
         }
     }
 
-    @RequestMapping(value = "editReservation", method = RequestMethod.POST)
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String updateReservation(@ModelAttribute("newReservation") PrenotazioneDTO prenotazioneDTO, RedirectAttributes redirectAttributes){
         System.out.println(prenotazioneDTO.getId());
         redirectAttributes.addFlashAttribute("newReservation", prenotazioneDTO);
         return "redirect:/freeAuto";
     }
 
-    @RequestMapping(value = "approveReservation", method = RequestMethod.GET)
+    @RequestMapping(value = "/approve", method = RequestMethod.GET)
     public String approveReservation(HttpSession session, @RequestParam("id") int id){
         prenotazioneService.updateStatus(true, id);
-        return "redirect:/viewReservations?id="+session.getAttribute("id");
+        return "redirect:/reservations?id="+session.getAttribute("idUser");
     }
 
-    @RequestMapping(value = "declineReservation", method = RequestMethod.GET)
+    @RequestMapping(value = "/decline", method = RequestMethod.GET)
     public String declineReservation(HttpSession session, @RequestParam("id") int idPren){
         prenotazioneService.updateStatus(false, idPren);
-        return "redirect:/viewReservations?id="+session.getAttribute("id");
+        return "redirect:/reservations?id="+session.getAttribute("idUser");
     }
 
-    @RequestMapping(value = "deleteReservation", method = RequestMethod.GET)
+    @PostMapping(value = "/delete")
     public String deleteReservation(HttpSession session, @RequestParam("id") int id){
         prenotazioneService.delReservation(id);
-        return "redirect:/viewReservations?id="+session.getAttribute("id");
+        return "redirect:/reservations?id="+session.getAttribute("idUser");
     }
 }

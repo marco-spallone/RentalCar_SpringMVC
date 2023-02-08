@@ -8,10 +8,13 @@ import it.stage.rentalcar.service.AutoService;
 import it.stage.rentalcar.service.AutoServiceImpl;
 import it.stage.rentalcar.service.UtenteService;
 import it.stage.rentalcar.service.UtenteServiceImpl;
+import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
+@Component
 public class PrenotazioneMapper {
 
     private final UtenteService utenteService;
@@ -28,8 +31,8 @@ public class PrenotazioneMapper {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return new Prenotazione(
                 prenotazioneDTO.getId(),
-                sdf.parse(prenotazioneDTO.getDataInizio()),
-                sdf.parse(prenotazioneDTO.getDataFine()),
+                LocalDate.parse(prenotazioneDTO.getDataInizio()),
+                LocalDate.parse(prenotazioneDTO.getDataFine()),
                 prenotazioneDTO.isApprovata(),
                 utente,
                 auto);

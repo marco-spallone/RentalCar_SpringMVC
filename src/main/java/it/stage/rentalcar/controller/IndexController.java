@@ -26,7 +26,7 @@ public class IndexController {
         if(session.getAttribute("isAdmin").equals(true)){
             return "redirect:/customers";
         } else {
-            return "redirect:/viewReservations?id="+u.getIdUtente();
+            return "redirect:/reservations?id="+u.getIdUtente();
         }
     }
 }

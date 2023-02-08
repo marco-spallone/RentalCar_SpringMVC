@@ -15,13 +15,13 @@
         <c:set var="url1" value="customers" />
     </c:when>
     <c:otherwise>
-        <c:set var="url1" value="viewReservations?id=${myid}" />
+        <c:set var="url1" value="reservations?id=${myid}" />
     </c:otherwise>
 </c:choose>
 <jsp:include page="navbar.jsp">
     <jsp:param name="url1" value="${url1}" />
     <jsp:param name="url2" value="cars"/>
-    <jsp:param name="url3" value="userProfile"/>
+    <jsp:param name="url3" value="customers/userProfile"/>
     <jsp:param name="url4" value="login/form"/>
 </jsp:include>
 
@@ -31,7 +31,7 @@
             <h3 class="page-title">Parco auto</h3>
             <c:choose>
                 <c:when test="${isAdmin=='true'}">
-                    <div class="mt-4 mb-4"><a href="<spring:url value="/addCar" />">
+                    <div class="mt-4 mb-4"><a href="<spring:url value="/cars/add" />">
                         <button class="btn btn-outline-info"><i class="fa-solid fa-car fa-lg"></i> Aggiungi auto</button></a>
                     </div>
                 </c:when>
@@ -58,8 +58,14 @@
                             <td>${car.targa}</td>
                             <c:choose>
                                 <c:when test="${isAdmin=='true'}">
-                                    <td><a href="<spring:url value='/editCar?id=${car.idAuto}' />"><button class="mx-auto btn btn-outline-warning"><i class="fa-sharp fa-solid fa-pen fa-lg"></i> Modifica</button></a></td>
-                                    <td><a href="<spring:url value='/deleteCar?id=${car.idAuto}' />"><button class="btn btn-outline-danger"><i class="fa-solid fa-trash fa-lg"></i> Elimina</button></a></td>
+                                    <td>
+                                        <a href="<spring:url value='cars/edit?id=${car.idAuto}' />"><button class="mx-auto btn btn-outline-warning"><i class="fa-sharp fa-solid fa-pen fa-lg"></i> Modifica</button></a></td>
+                                    <td>
+                                        <form action="cars/delete" method="post">
+                                            <input type="hidden" name="id" value="${car.idAuto}">
+                                            <button type="submit" class="btn btn-outline-danger"><i class="fa-solid fa-trash fa-lg"></i> Elimina</button>
+                                        </form>
+                                    </td>
                                 </c:when>
                                 <c:otherwise />
                             </c:choose>

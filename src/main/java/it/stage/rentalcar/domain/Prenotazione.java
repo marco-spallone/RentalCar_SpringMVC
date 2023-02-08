@@ -1,11 +1,8 @@
 package it.stage.rentalcar.domain;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.*;
 
 @Entity
 @Table(name="prenotazione")
@@ -17,26 +14,26 @@ public class Prenotazione {
     private int idPrenotazione;
 
     @Column(name="data_inizio")
-    private Date dataInizio;
+    private LocalDate dataInizio;
 
     @Column(name="data_fine")
-    private Date dataFine;
+    private LocalDate dataFine;
 
     @Column(name="confermata")
     private boolean confermata;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="id_utente", referencedColumnName = "id_utente", nullable = false)
     private Utente utente;
 
     @ManyToOne
     @JoinColumn(name="id_auto", referencedColumnName = "id_auto")
-    private Auto auto = new Auto();
+    private Auto auto;
 
     public Prenotazione() {
     }
 
-    public Prenotazione(int idPrenotazione, Date dataInizio, Date dataFine, boolean confermata, Utente utente, Auto auto) {
+    public Prenotazione(int idPrenotazione, LocalDate dataInizio, LocalDate dataFine, boolean confermata, Utente utente, Auto auto) {
         this.idPrenotazione = idPrenotazione;
         this.dataInizio = dataInizio;
         this.dataFine = dataFine;
@@ -53,19 +50,19 @@ public class Prenotazione {
         this.idPrenotazione = idPrenotazione;
     }
 
-    public Date getDataInizio() {
+    public LocalDate getDataInizio() {
         return dataInizio;
     }
 
-    public void setDataInizio(Date dataInizio) {
+    public void setDataInizio(LocalDate dataInizio) {
         this.dataInizio = dataInizio;
     }
 
-    public Date getDataFine() {
+    public LocalDate getDataFine() {
         return dataFine;
     }
 
-    public void setDataFine(Date dataFine) {
+    public void setDataFine(LocalDate dataFine) {
         this.dataFine = dataFine;
     }
 

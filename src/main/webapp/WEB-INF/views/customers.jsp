@@ -14,14 +14,14 @@
 <jsp:include page="navbar.jsp">
     <jsp:param name="url1" value="customers" />
     <jsp:param name="url2" value="cars"/>
-    <jsp:param name="url3" value="userProfile"/>
+    <jsp:param name="url3" value="customers/userProfile"/>
     <jsp:param name="url4" value="login/form"/>
 </jsp:include>
 <div class="container">
     <div class="row">
         <div class="mx-auto mt-5 col-md-6 col-sm-6">
             <h3 class="page-title">Customers</h3>
-            <div class="mt-4 mb-4"><a href="<spring:url value="/addCustomer" />">
+            <div class="mt-4 mb-4"><a href="<spring:url value="customers/add" />">
                 <button class="btn btn-outline-info"><i class="fa-solid fa-user-plus fa-lg" ></i> Aggiungi customer</button></a></div>
             <div class="form-horizontal"><div class="form-group mt-2 mb-2">
                 <form method="post" action="filterCustomers">
@@ -47,9 +47,13 @@
                         <tr>
                             <td>${customer.nome}</td>
                             <td>${customer.cognome}</td>
-                            <td><a href="<spring:url value='/editCustomer?id=${customer.idUtente}' />"><button class="mx-auto btn btn-outline-warning"><i class="fa-sharp fa-solid fa-pen fa-lg"></i> Modifica</button></a></td>
-                            <td><a href="<spring:url value='/viewReservations?id=${customer.idUtente}' />"><button class="btn btn-outline-info"><i class="fa-solid fa-calendar fa-lg"></i> Prenotazioni</button></a></td>
-                            <td><a href="<spring:url value='/deleteCustomer?id=${customer.idUtente}' />"><button class="btn btn-outline-danger"><i class="fa-solid fa-trash fa-lg"></i> Elimina</button></a></td>
+                            <td><a href="<spring:url value='customers/edit?id=${customer.idUtente}' />"><button class="mx-auto btn btn-outline-warning"><i class="fa-sharp fa-solid fa-pen fa-lg"></i> Modifica</button></a></td>
+                            <td><a href="<spring:url value='/reservations?id=${customer.idUtente}' />"><button class="btn btn-outline-info"><i class="fa-solid fa-calendar fa-lg"></i> Prenotazioni</button></a></td>
+                            <td>
+                                <form action="customers/delete" method="post">
+                                    <input type="hidden" name="id" value="${customer.idUtente}">
+                                    <button type="submit" class="btn btn-outline-danger"><i class="fa-solid fa-trash fa-lg"></i> Elimina</button>
+                                </form>
                         </tr>
                     </c:forEach>
                     </tbody>

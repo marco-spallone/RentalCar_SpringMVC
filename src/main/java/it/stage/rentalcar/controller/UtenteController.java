@@ -2,25 +2,26 @@ package it.stage.rentalcar.controller;
 
 import it.stage.rentalcar.domain.Utente;
 import it.stage.rentalcar.service.UtenteService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/customers")
 public class UtenteController {
     private final UtenteService utenteService;
+    private final PasswordEncoder passwordEncoder;
 
-    public UtenteController(UtenteService utenteService) {
+    public UtenteController(UtenteService utenteService, PasswordEncoder passwordEncoder) {
         this.utenteService = utenteService;
+        this.passwordEncoder = passwordEncoder;
     }
 
-    @RequestMapping(value = "/customers", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public String getCustomers(HttpSession session, Model model){
         List<Utente> customers = utenteService.getCustomers(false);
         model.addAttribute("customers", customers);
@@ -29,14 +30,14 @@ public class UtenteController {
         return "customers";
     }
 
-    @RequestMapping(value = "/filterCustomers", method = RequestMethod.POST)
+    @RequestMapping(value = "/filter", method = RequestMethod.POST)
     public String filter(@RequestParam("field") String field, @RequestParam("value") String value, Model model){
         List<Utente> customers = utenteService.filter(field, value);
         model.addAttribute("customers", customers);
         return "customers";
     }
 
-    @RequestMapping(value = "/addCustomer", method = RequestMethod.GET)
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addCustomer(HttpSession session, Model model){
         Utente utente = new Utente();
         model.addAttribute("newCustomer", utente);
@@ -44,13 +45,14 @@ public class UtenteController {
         return "customerForm";
     }
 
-    @RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String insCustomer(@ModelAttribute("newCustomer") Utente utente){
+        utente.setPassword(passwordEncoder.encode(utente.getPassword()));
         utenteService.insOrUpCustomer(utente);
         return "redirect:/customers";
     }
 
-    @RequestMapping(value = "/editCustomer", method = RequestMethod.GET)
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String editCustomer(HttpSession session, @RequestParam("id") int id, Model model){
         Utente newU = utenteService.getUserFromId(id);
         model.addAttribute("id", id);
@@ -59,8 +61,9 @@ public class UtenteController {
         return "customerForm";
     }
 
-    @RequestMapping(value = "/editCustomer", method = RequestMethod.POST)
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String upCustomer(@ModelAttribute("newCustomer") Utente utente){
+        utente.setPassword(passwordEncoder.encode(utente.getPassword()));
         utenteService.insOrUpCustomer(utente);
         return "redirect:/customers";
     }
@@ -78,7 +81,7 @@ public class UtenteController {
         return "redirect:/userProfile";
     }
 
-    @RequestMapping(value = "/deleteCustomer", method = RequestMethod.GET)
+    @PostMapping(value = "/delete")
     public String deleteCustomer(@RequestParam("id") int id){
         utenteService.delCustomer(id);
         return "redirect:/customers";

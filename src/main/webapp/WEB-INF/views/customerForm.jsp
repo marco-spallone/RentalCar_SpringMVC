@@ -12,10 +12,10 @@
 </head>
 <body>
 <jsp:include page="navbar.jsp">
-    <jsp:param name="url1" value="customers" />
-    <jsp:param name="url2" value="cars"/>
-    <jsp:param name="url3" value="userProfile"/>
-    <jsp:param name="url4" value="login/form"/>
+    <jsp:param name="url1" value="../customers" />
+    <jsp:param name="url2" value="../cars"/>
+    <jsp:param name="url3" value="../customers/userProfile"/>
+    <jsp:param name="url4" value="../login/form"/>
 </jsp:include>
 <div class="container">
     <div class="row">
