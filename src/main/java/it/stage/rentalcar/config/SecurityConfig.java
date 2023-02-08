@@ -68,13 +68,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
     }
 
-    private static final String[] ADMIN_CLIENTI_MATCHER={"customers"};
+    private static final String[] ADMIN_MATCHER={
+            "/customers/**",
+            "/editCar/**",
+            "/addCar/**",
+            "/deleteCar/**",
+            "/approveReservation/**",
+            "/declineReservation/**",
+            "/addCustomer/**",
+            "/editCustomer/**",
+            "/deleteCustomer/**"
+    };
+
+    private static final String[] CUSTOMER_MATCHER={
+            "/addReservation/**",
+            "/freeAuto/**",
+            "/editReservation/**",
+            "deleteReservation/**"
+    };
 
     @Override
     public void configure(final HttpSecurity http) throws Exception{
         http.authorizeRequests()
-                .antMatchers("/login").permitAll()
-                .antMatchers(ADMIN_CLIENTI_MATCHER).access("hasRole('ADMIN')").and()
+                .antMatchers("/login/form").permitAll()
+                .antMatchers(ADMIN_MATCHER).access("hasRole('ADMIN')")
+                .antMatchers(CUSTOMER_MATCHER).access("hasRole('CUSTOMER')").and()
                 .formLogin().loginPage("/login/form").loginProcessingUrl("/login")
                 .usernameParameter("username").passwordParameter("password")
                 .failureUrl("/login/form?error").defaultSuccessUrl("/index")
