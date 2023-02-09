@@ -9,21 +9,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49c873af-4aaa-48a2-b84f-678c0f7086f6" name="Changes" comment="-Modifica permessi per accesso a tutti gli URL &quot;sensibili&quot;.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/config/CustomDetailsManager.java" afterDir="false" />
+    <list default="true" id="49c873af-4aaa-48a2-b84f-678c0f7086f6" name="Changes" comment="-Varie fix">
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/config/MyUserDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/util/DateUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/config/CustomDetailsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/config/CustomDetailsManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/AutoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/AutoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/IndexController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/PrenotazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/PrenotazioneController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/UtenteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/UtenteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/domain/Prenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/domain/Prenotazione.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/mapper/PrenotazioneMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/mapper/PrenotazioneMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/domain/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/domain/Utente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/AutoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/AutoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/definitions/tiles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/definitions/tiles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/templates/base.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/templates/base.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/carFleet.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/carFleet.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/carForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/carForm.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customerForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customerForm.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customers.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customers.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/templates/navbar.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reservationForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reservationForm.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reservations.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reservations.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/selectCar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/selectCar.jsp" afterDir="false" />
@@ -107,6 +118,7 @@
       <recent name="it.stage.rentalcar.repository" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\marco\IdeaProjects\RentalCar_SpringMVC\src\main\webapp\WEB-INF\layouts\templates" />
       <recent name="C:\Users\marco\IdeaProjects\RentalCar_SpringMVC\src\main\webapp\WEB-INF\views" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -224,7 +236,9 @@
       <workItem from="1675413240093" duration="23114000" />
       <workItem from="1675757897583" duration="10728000" />
       <workItem from="1675770998651" duration="12852000" />
-      <workItem from="1675844752321" duration="18698000" />
+      <workItem from="1675844752321" duration="18977000" />
+      <workItem from="1675931383558" duration="12405000" />
+      <workItem from="1675949515633" duration="10759000" />
     </task>
     <task id="LOCAL-00001" summary="-Creazione progetto e definizione delle dipendenze Maven.">
       <created>1674837981489</created>
@@ -324,7 +338,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675854933621</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="-Varie fix">
+      <created>1675875033645</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1675875033645</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,6 +386,7 @@
     <MESSAGE value="-Completamento implementazione login.&#10;-Modifiche all'interfaccia grafica.&#10;-Implementazione logout.&#10;-Navigazione tra le varie pagine." />
     <MESSAGE value="-Modifiche permessi per accesso a tutti gli URL &quot;sensibili&quot;." />
     <MESSAGE value="-Modifica permessi per accesso a tutti gli URL &quot;sensibili&quot;." />
-    <option name="LAST_COMMIT_MESSAGE" value="-Modifica permessi per accesso a tutti gli URL &quot;sensibili&quot;." />
+    <MESSAGE value="-Varie fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Varie fix" />
   </component>
 </project>

@@ -1,9 +1,11 @@
 package it.stage.rentalcar.service;
 
+import it.stage.rentalcar.domain.Auto;
 import it.stage.rentalcar.domain.Prenotazione;
 import it.stage.rentalcar.dto.PrenotazioneDTO;
 
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -11,9 +13,8 @@ import java.util.Map;
 public interface PrenotazioneService {
     List<Prenotazione> getReservationsForUser(int id);
     Prenotazione getReservationFromId(int id);
-    List<Prenotazione> getReservationsBetweenDates(Date inizio, Date fine);
+    List<Auto> getReservableCars(LocalDate inizio, LocalDate fine);
     List<Prenotazione> filter(String field, String value) throws ParseException;
-    Map<String, Date> parseDate(PrenotazioneDTO prenotazioneDTO) throws ParseException;
     Prenotazione checkDate(PrenotazioneDTO prenotazioneDTO) throws Exception;
     boolean checkModificable(Prenotazione p) throws Exception;
     void insOrUpReservation(Prenotazione p);

@@ -35,14 +35,14 @@ public class AutoServiceImpl implements AutoService {
         for (Prenotazione p:reservations) {
             alreadyReserved.add(p.getAuto());
         }
-        Iterator<Auto> iter1 = free.iterator();
-        Iterator<Auto> iter2 = alreadyReserved.iterator();
-        while (iter1.hasNext()) {
-            Auto auto1 = iter1.next();
-            while (iter2.hasNext()) {
-                Auto auto2 = iter2.next();
+        Iterator<Auto> iterOnFree = free.iterator();
+        Iterator<Auto> iterOnReserved = alreadyReserved.iterator();
+        while (iterOnFree.hasNext()) {
+            Auto auto1 = iterOnFree.next();
+            while (iterOnReserved.hasNext()) {
+                Auto auto2 = iterOnReserved.next();
                 if (auto1.getTarga().equals(auto2.getTarga())) {
-                    iter1.remove();
+                    iterOnFree.remove();
                     break;
                 }
             }

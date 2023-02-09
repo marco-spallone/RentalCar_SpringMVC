@@ -6,16 +6,15 @@ import it.stage.rentalcar.domain.Utente;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.Disjunction;
-import org.hibernate.criterion.LogicalExpression;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.*;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;
 import javax.persistence.criteria.*;
+import javax.persistence.criteria.CriteriaQuery;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -44,7 +43,7 @@ public class PrenotazioneRepositoryImpl implements PrenotazioneRepository {
     }
 
     @Override
-    public List<Prenotazione> getReservationsBetweenDates(Date inizio, Date fine) {
+    public List<Prenotazione> getReservationsBetweenDates(LocalDate inizio, LocalDate fine) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Prenotazione> criteria = builder.createQuery(Prenotazione.class);
@@ -53,8 +52,7 @@ public class PrenotazioneRepositoryImpl implements PrenotazioneRepository {
         Predicate p2 = builder.between(root.get("dataFine"), inizio, fine);
         Predicate p3 = builder.and(builder.lessThanOrEqualTo(root.get("dataInizio"), inizio), builder.greaterThanOrEqualTo(root.get("dataFine"), fine));
         criteria.select(root).where(builder.or(p1, p2, p3));
-        List<Prenotazione> reservations = session.createQuery(criteria).list();
-        return reservations;
+        return session.createQuery(criteria).list();
     }
 
     @Override
@@ -67,10 +65,9 @@ public class PrenotazioneRepositoryImpl implements PrenotazioneRepository {
                 System.out.println(e);
             }
         } else {
-            Date filter = new SimpleDateFormat("yyyy-MM-dd").parse(value);
             try(Session session= HibernateUtil.getSessionFactory().openSession()){
                 return session.createQuery("SELECT a FROM Prenotazione a WHERE a."+field+"=:filter", Prenotazione.class)
-                        .setParameter("filter", filter).list();
+                        .setParameter("filter", LocalDate.parse(value)).list();
             } catch (Exception e){
                 System.out.println(e);
             }

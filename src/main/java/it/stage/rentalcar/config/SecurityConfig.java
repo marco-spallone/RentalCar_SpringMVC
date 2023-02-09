@@ -4,14 +4,14 @@ import it.stage.rentalcar.domain.Utente;
 import it.stage.rentalcar.service.UtenteService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.context.request.RequestContextListener;
 
 import java.util.List;
@@ -20,10 +20,10 @@ import java.util.List;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final UtenteService utenteService;
+    private final UserDetailsService userDetailsService;
 
-    public SecurityConfig(UtenteService utenteService) {
-        this.utenteService = utenteService;
+    public SecurityConfig(UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
     }
 
     @Bean
@@ -39,12 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     @Override
     public UserDetailsService userDetailsService(){
-        CustomDetailsManager userDetailsManager = new CustomDetailsManager(utenteService);
-        List<Utente> customers = utenteService.getCustomers(false);
-        for (Utente u:customers) {
-            userDetailsManager.loadUserByUsername(u.getUsername());
-        }
-        return userDetailsManager;
+        return userDetailsService;
     }
 
     @Override

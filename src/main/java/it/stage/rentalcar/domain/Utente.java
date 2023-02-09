@@ -23,7 +23,7 @@ public class Utente implements Serializable {
     @Column(name="cognome")
     private String cognome;
 
-    @Column(name="username")
+    @Column(name="username", unique = true)
     private String username;
 
     @Column(name="password")

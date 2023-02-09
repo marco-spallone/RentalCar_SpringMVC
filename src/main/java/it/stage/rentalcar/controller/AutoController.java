@@ -1,7 +1,11 @@
 package it.stage.rentalcar.controller;
 
 import it.stage.rentalcar.domain.Auto;
+import it.stage.rentalcar.domain.Utente;
 import it.stage.rentalcar.service.AutoService;
+import it.stage.rentalcar.service.UtenteService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,17 +20,21 @@ import java.util.Map;
 public class AutoController {
 
     private final AutoService autoService;
+    private final UtenteService utenteService;
 
-    public AutoController(AutoService autoService){
+    public AutoController(AutoService autoService, UtenteService utenteService){
         this.autoService=autoService;
+        this.utenteService=utenteService;
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String getCars(HttpSession session, Model model){
+    public String getCars(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Utente u = utenteService.getUserFromUsername(authentication.getName());
         List<Auto> cars = autoService.getCars();
         model.addAttribute("cars",  cars);
-        model.addAttribute("myid", session.getAttribute("myid"));
-        model.addAttribute("isAdmin", session.getAttribute("isAdmin"));
+        model.addAttribute("myid", u.getIdUtente());
+        model.addAttribute("isAdmin", u.getIsAdmin());
         return "carFleet";
     }
 

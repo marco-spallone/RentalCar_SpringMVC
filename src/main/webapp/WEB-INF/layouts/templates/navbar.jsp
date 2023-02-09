@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <html>
 <head>
     <title>Navbar</title>
@@ -11,7 +13,7 @@
 <body>
 <!-- HEADER -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Rental Car</a>
+    <a class="navbar-brand" href="#"><sec:authentication  /></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -24,7 +26,7 @@
                 <a class="nav-link" href="${param.url2}">Parco Auto</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="${param.url3}">Profilo utente</a>
+                <a class="nav-link" href="${url3}">Profilo utente</a>
             </li>
         </ul>
     </div>

@@ -3,7 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<html>
 <head>
     <title>Customers</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <script src="https://kit.fontawesome.com/6b1574191b.js" crossorigin="anonymous"></script>
 </head>
-<jsp:include page="navbar.jsp">
-    <jsp:param name="url1" value="customers" />
-    <jsp:param name="url2" value="cars"/>
-    <jsp:param name="url3" value="customers/userProfile"/>
-    <jsp:param name="url4" value="login/form"/>
-</jsp:include>
+<body>
+<c:set var="url1" value="customers" />
+<c:set var="url2" value="cars" />
+<c:set var="url3" value="customers/userProfile" />
+<c:set var="url4" value="login/form" />
+
 <div class="container">
     <div class="row">
         <div class="mx-auto mt-5 col-md-6 col-sm-6">

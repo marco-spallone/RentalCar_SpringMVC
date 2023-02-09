@@ -5,6 +5,7 @@ import it.stage.rentalcar.domain.Prenotazione;
 import it.stage.rentalcar.dto.PrenotazioneDTO;
 import it.stage.rentalcar.mapper.PrenotazioneMapper;
 import it.stage.rentalcar.repository.PrenotazioneRepository;
+import it.stage.rentalcar.util.DateUtil;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -39,28 +40,17 @@ public class PrenotazioneServiceImpl implements PrenotazioneService {
     @Override
     public Prenotazione getReservationFromId(int id) { return prenotazioneRepository.getReservationFromId(id); }
     @Override
-    public List<Prenotazione> getReservationsBetweenDates(Date inizio, Date fine) {
-        return prenotazioneRepository.getReservationsBetweenDates(inizio, fine);
+    public List<Auto> getReservableCars(LocalDate inizio, LocalDate fine) {
+        List<Prenotazione> reservations = prenotazioneRepository.getReservationsBetweenDates(inizio, fine);
+        List<Auto> reservedCars = autoService.getFreeCars(reservations);
+        return reservedCars;
     }
-    @Override
-    public Map<String, Date> parseDate(PrenotazioneDTO prenotazioneDTO) throws ParseException {
-        Map<String, Date> dates = new HashMap<>();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        if(prenotazioneDTO.getDataInizio()!=null){
-            Date inizio = sdf.parse(prenotazioneDTO.getDataInizio());
-            dates.put("inizio", inizio);
-        }
-        if(prenotazioneDTO.getDataFine()!=null){
-            Date fine = sdf.parse(prenotazioneDTO.getDataFine());
-            dates.put("fine", fine);
-        }
-        return dates;
-    }
+
     @Override
     public Prenotazione checkDate(PrenotazioneDTO prenotazioneDTO) throws Exception {
-        Date now = new Date();
-        Map<String, Date> dates = parseDate(prenotazioneDTO);
-        if(dates.get("fine").before(dates.get("inizio")) || dates.get("inizio").before(now)){
+        LocalDate inizio = DateUtil.parseDate(prenotazioneDTO.getDataInizio());
+        LocalDate fine = DateUtil.parseDate(prenotazioneDTO.getDataFine());
+        if(fine.isBefore(inizio) || inizio.isBefore(LocalDate.now())){
             throw new Exception("Date invalide.");
         } else {
             return prenotazioneMapper.fromDTOtoEntity(prenotazioneDTO);

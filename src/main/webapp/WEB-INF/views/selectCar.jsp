@@ -11,12 +11,10 @@
   <script src="https://kit.fontawesome.com/6b1574191b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<jsp:include page="navbar.jsp">
-  <jsp:param name="url1" value="../reservations?id=${myid}" />
-  <jsp:param name="url2" value="../cars"/>
-  <jsp:param name="url3" value="../customers/userProfile"/>
-  <jsp:param name="url4" value="../login/form"/>
-</jsp:include>
+<c:set var="url1" value="../reservations?id=${myid}" />
+<c:set var="url2" value="../cars" />
+<c:set var="url3" value="../customers/userProfile" />
+<c:set var="url4" value="../login/form" />
 
 <div class="container">
   <div class="row">

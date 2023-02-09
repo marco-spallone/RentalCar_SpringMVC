@@ -30,13 +30,9 @@
     <c:set var="url1" value="reservations?id=${myid}" />
   </c:otherwise>
 </c:choose>
-
-<jsp:include page="navbar.jsp">
-  <jsp:param name="url1" value="${url1}" />
-  <jsp:param name="url2" value="cars"/>
-  <jsp:param name="url3" value="customers/userProfile"/>
-  <jsp:param name="url4" value="login/form"/>
-</jsp:include>
+<c:set var="url2" value="cars" />
+<c:set var="url3" value="customers/userProfile" />
+<c:set var="url4" value="login/form" />
 <div class="container">
   <div class="row">
     <div class="mx-auto mt-5 col-sm-8">
@@ -51,7 +47,7 @@
         </c:choose>
       </div></div>
       <div class="form-horizontal"><div class="form-group mt-2 mb-2">
-        <form method="post" action="filterReservations">
+        <form method="post" action="reservations/filter?id=${id}">
           <select name="field" class="form-select" onchange="changeType(this.value)">
             <option value="dataInizio" selected>Data inizio</option>
             <option value="dataFine">Data fine</option>
@@ -59,7 +55,7 @@
           </select>
           <input name="value" id="value" type="date" class="form-control mt-2"/>
           <button type="submit" class="mt-3 btn btn-outline-primary"><i class="fa-solid fa-filter"></i></button>
-          <a href="viewReservations?id=${id}"><button type="button" class="mt-3 btn btn-outline-danger"><i class="fa-solid fa-x"></i></button></a>
+          <a href="../reservations?id=${id}"><button type="button" class="mt-3 btn btn-outline-danger"><i class="fa-solid fa-x"></i></button></a>
         </form>
       </div></div>
       <div id="tabPrenotazioni">
@@ -84,7 +80,7 @@
                   <c:otherwise>
                     <c:choose>
                       <c:when test="${isAdmin=='true'}">
-                        <a href="approveReservation?id=${reservation.idPrenotazione}"><button class="btn btn-outline-success">
+                        <a href="reservations/approve?id=${reservation.idPrenotazione}"><button class="btn btn-outline-success">
                           <i class="fa-solid fa-check"></i> Accetta</button></a>
                         <a href="reservations/decline?id=${reservation.idPrenotazione}"><button class="btn btn-outline-danger">
                           <i class="fa-solid fa-x"></i> Rifiuta</button></a>

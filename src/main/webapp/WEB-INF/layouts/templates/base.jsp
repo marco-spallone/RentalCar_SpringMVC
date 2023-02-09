@@ -6,6 +6,7 @@
     <title>Base</title>
 </head>
 <body>
+    <tiles:insertAttribute name="header"/>
     <tiles:insertAttribute name="content" />
 </body>
 </html>

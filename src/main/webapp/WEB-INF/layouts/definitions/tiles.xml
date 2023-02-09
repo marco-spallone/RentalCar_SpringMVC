@@ -4,6 +4,7 @@
 
 <tiles-definitions>
     <definition name="baseLayout" template="/WEB-INF/layouts/templates/base.jsp">
+        <put-attribute name="header" value="/WEB-INF/layouts/templates/navbar.jsp" />
         <put-attribute name="content" value="" />
     </definition>
     <definition name="index" extends="baseLayout">
