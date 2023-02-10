@@ -11,19 +11,33 @@
     <script src="https://kit.fontawesome.com/6b1574191b.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<sec:authentication property="principal.isAdmin" var="isAdmin" />
+<sec:authentication property="principal.id" var="myid" />
+<c:choose>
+    <c:when test="${isAdmin}">
+        <c:set var="url1" value="${pageContext.servletContext.contextPath}/customers" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="url1" value="${pageContext.servletContext.contextPath}/reservations?id=${myid}" />
+    </c:otherwise>
+</c:choose>
+<c:set var="url2" value="${pageContext.servletContext.contextPath}/cars" />
+<c:set var="url3" value="${pageContext.servletContext.contextPath}/customers/userProfile" />
+<c:set var="url4" value="${pageContext.servletContext.contextPath}/login/form?logout" />
+
 <!-- HEADER -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#"><sec:authentication  /></a>
+    <a class="navbar-brand" href="#">Rental Car</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="${param.url1}">Home</a>
+                <a class="nav-link" href="${url1}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="${param.url2}">Parco Auto</a>
+                <a class="nav-link" href="${url2}">Parco Auto</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="${url3}">Profilo utente</a>
@@ -31,9 +45,10 @@
         </ul>
     </div>
     <div class="nav navbar-nav navbar-right">
-        <a href="${param.url4}" class="navbar-brand"><button type="button" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Esci</button></a>
+        <a href="${url4}" class="navbar-brand"><button type="button" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Esci</button></a>
     </div>
 </nav>
+
 
 </body>
 </html>

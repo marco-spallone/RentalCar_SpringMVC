@@ -11,17 +11,6 @@
   <script src="https://kit.fontawesome.com/6b1574191b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<c:choose>
-  <c:when test="${isAdmin=='true'}">
-    <c:set var="url1" value="../customers" />
-  </c:when>
-  <c:otherwise>
-    <c:set var="url1" value="../reservations?id=${myid}" />
-  </c:otherwise>
-</c:choose>
-<c:set var="url2" value="../cars" />
-<c:set var="url3" value="#" />
-<c:set var="url4" value="../login/form" />
 <div class="container">
   <div class="row">
     <div class="mx-auto mt-5 col-md-6 col-sm-6">

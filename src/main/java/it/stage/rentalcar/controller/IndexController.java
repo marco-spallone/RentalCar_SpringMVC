@@ -1,24 +1,21 @@
 package it.stage.rentalcar.controller;
 
-import it.stage.rentalcar.config.CustomDetailsManager;
 import it.stage.rentalcar.domain.Utente;
 import it.stage.rentalcar.service.UtenteService;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class IndexController {
     private final UtenteService utenteService;
+    private final PasswordEncoder passwordEncoder;
 
-    public IndexController(UtenteService utenteService) {
+    public IndexController(UtenteService utenteService, PasswordEncoder passwordEncoder) {
         this.utenteService = utenteService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping(value = "/index")
@@ -31,4 +28,5 @@ public class IndexController {
             return "redirect:/reservations?id="+u.getIdUtente();
         }
     }
+
 }

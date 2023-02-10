@@ -12,10 +12,6 @@
     <script src="https://kit.fontawesome.com/6b1574191b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<c:set var="url1" value="customers" />
-<c:set var="url2" value="cars" />
-<c:set var="url3" value="customers/userProfile" />
-<c:set var="url4" value="login/form" />
 
 <div class="container">
     <div class="row">
@@ -24,14 +20,14 @@
             <div class="mt-4 mb-4"><a href="<spring:url value="customers/add" />">
                 <button class="btn btn-outline-info"><i class="fa-solid fa-user-plus fa-lg" ></i> Aggiungi customer</button></a></div>
             <div class="form-horizontal"><div class="form-group mt-2 mb-2">
-                <form method="post" action="filterCustomers">
+                <form method="post" action="customers/filter">
                     <select name="field" class="form-select">
                         <option value="nome">Nome</option>
                         <option value="cognome">Cognome</option>
                     </select>
                     <input name="value" id="value" type="text" class="form-control mt-2" placeholder="Filtra per..."/>
                     <button type="submit" class="mt-3 btn btn-outline-primary"><i class="fa-solid fa-filter"></i></button>
-                    <a href="customers"><button type="button" class="mt-3 btn btn-outline-danger"><i class="fa-solid fa-x"></i></button></a>
+                    <a href="../customers"><button type="button" class="mt-3 btn btn-outline-danger"><i class="fa-solid fa-x"></i></button></a>
                 </form>
             </div></div>
             <div id="tabUtenti">
@@ -47,7 +43,7 @@
                         <tr>
                             <td>${customer.nome}</td>
                             <td>${customer.cognome}</td>
-                            <td><a href="<spring:url value='customers/edit?id=${customer.idUtente}' />"><button class="mx-auto btn btn-outline-warning"><i class="fa-sharp fa-solid fa-pen fa-lg"></i> Modifica</button></a></td>
+                            <td><a href="<spring:url value='customers/add?id=${customer.idUtente}' />"><button class="mx-auto btn btn-outline-warning"><i class="fa-sharp fa-solid fa-pen fa-lg"></i> Modifica</button></a></td>
                             <td><a href="<spring:url value='/reservations?id=${customer.idUtente}' />"><button class="btn btn-outline-info"><i class="fa-solid fa-calendar fa-lg"></i> Prenotazioni</button></a></td>
                             <td>
                                 <form action="customers/delete" method="post">

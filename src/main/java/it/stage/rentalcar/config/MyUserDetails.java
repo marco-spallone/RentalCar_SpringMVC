@@ -1,10 +1,11 @@
 package it.stage.rentalcar.config;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 
@@ -13,11 +14,7 @@ public class MyUserDetails implements UserDetails {
     private String username;
     private boolean isAdmin;
     private String password;
-    private Set<GrantedAuthority> authorities;
-
-    public boolean isAdmin() {
-        return isAdmin;
-    }
+    private List<SimpleGrantedAuthority> authorities;
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
@@ -27,7 +24,7 @@ public class MyUserDetails implements UserDetails {
         this.password = password;
     }
 
-    public void setAuthorities(Set<GrantedAuthority> authorities) {
+    public void setAuthorities(List<SimpleGrantedAuthority> authorities) {
         this.authorities = authorities;
     }
 
@@ -53,36 +50,36 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return this.authorities;
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return this.password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return this.username;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

@@ -1,7 +1,6 @@
 package it.stage.rentalcar.util;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class DateUtil {
 

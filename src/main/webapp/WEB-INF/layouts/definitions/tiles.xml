@@ -7,23 +7,14 @@
         <put-attribute name="header" value="/WEB-INF/layouts/templates/navbar.jsp" />
         <put-attribute name="content" value="" />
     </definition>
-    <definition name="index" extends="baseLayout">
-        <put-attribute name="content" value="/WEB-INF/views/index.jsp"/>
-    </definition>
     <definition name="customers" extends="baseLayout">
         <put-attribute name="content" value="/WEB-INF/views/customers.jsp"/>
-    </definition>
-    <definition name="addCustomer" extends="baseLayout">
-        <put-attribute name="content" value="/WEB-INF/views/addCustomer.jsp"/>
     </definition>
     <definition name="reservations" extends="baseLayout">
         <put-attribute name="content" value="/WEB-INF/views/reservations.jsp"/>
     </definition>
-    <definition name="addReservation" extends="baseLayout">
-        <put-attribute name="content" value="/WEB-INF/views/addReservation.jsp"/>
-    </definition>
-    <definition name="addCar" extends="baseLayout">
-        <put-attribute name="content" value="/WEB-INF/views/addCar.jsp"/>
+    <definition name="reservationForm" extends="baseLayout">
+        <put-attribute name="content" value="/WEB-INF/views/reservationForm.jsp"/>
     </definition>
     <definition name="selectCar" extends="baseLayout">
         <put-attribute name="content" value="/WEB-INF/views/selectCar.jsp"/>
@@ -33,5 +24,17 @@
     </definition>
     <definition name="login" extends="baseLogin">
         <put-attribute name="content" value="/WEB-INF/views/login.jsp"/>
+    </definition>
+    <definition name="carFleet" extends="baseLayout">
+        <put-attribute name="content" value="/WEB-INF/views/carFleet.jsp"/>
+    </definition>
+    <definition name="carForm" extends="baseLayout">
+        <put-attribute name="content" value="/WEB-INF/views/carForm.jsp"/>
+    </definition>
+    <definition name="customerForm" extends="baseLayout">
+        <put-attribute name="content" value="/WEB-INF/views/customerForm.jsp"/>
+    </definition>
+    <definition name="userProfile" extends="baseLayout">
+        <put-attribute name="content" value="/WEB-INF/views/userProfile.jsp"/>
     </definition>
 </tiles-definitions>

@@ -1,6 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title></title>
@@ -10,24 +13,13 @@
     <script src="https://kit.fontawesome.com/6b1574191b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<c:choose>
-    <c:when test="${isAdmin=='true'}">
-        <c:set var="url1" value="customers" />
-    </c:when>
-    <c:otherwise>
-        <c:set var="url1" value="reservations?id=${myid}" />
-    </c:otherwise>
-</c:choose>
-<c:set var="url2" value="cars" />
-<c:set var="url3" value="customers/userProfile" />
-<c:set var="url4" value="login/form" />
-
+<sec:authentication property="principal.isAdmin" var="isAdmin" />
 <div class="container">
     <div class="row">
         <div class="mx-auto mt-5 col-md-8 col-sm-8">
             <h3 class="page-title">Parco auto</h3>
             <c:choose>
-                <c:when test="${isAdmin=='true'}">
+                <c:when test="${isAdmin==true}">
                     <div class="mt-4 mb-4"><a href="<spring:url value="/cars/add" />">
                         <button class="btn btn-outline-info"><i class="fa-solid fa-car fa-lg"></i> Aggiungi auto</button></a>
                     </div>
@@ -56,7 +48,7 @@
                             <c:choose>
                                 <c:when test="${isAdmin=='true'}">
                                     <td>
-                                        <a href="<spring:url value='cars/edit?id=${car.idAuto}' />"><button class="mx-auto btn btn-outline-warning"><i class="fa-sharp fa-solid fa-pen fa-lg"></i> Modifica</button></a></td>
+                                        <a href="<spring:url value='cars/add?id=${car.idAuto}' />"><button class="mx-auto btn btn-outline-warning"><i class="fa-sharp fa-solid fa-pen fa-lg"></i> Modifica</button></a></td>
                                     <td>
                                         <form action="cars/delete" method="post">
                                             <input type="hidden" name="id" value="${car.idAuto}">

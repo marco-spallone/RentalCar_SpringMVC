@@ -2,7 +2,6 @@ package it.stage.rentalcar.repository;
 
 import it.stage.rentalcar.config.HibernateUtil;
 import it.stage.rentalcar.domain.Utente;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;

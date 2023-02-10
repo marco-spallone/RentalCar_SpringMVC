@@ -6,9 +6,7 @@ import it.stage.rentalcar.dto.PrenotazioneDTO;
 
 import java.text.ParseException;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 public interface PrenotazioneService {
     List<Prenotazione> getReservationsForUser(int id);

@@ -11,16 +11,12 @@
   <script src="https://kit.fontawesome.com/6b1574191b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<c:set var="url1" value="../reservations?id=${myid}" />
-<c:set var="url2" value="../cars" />
-<c:set var="url3" value="../customers/userProfile" />
-<c:set var="url4" value="../login/form" />
 
 <div class="container">
   <div class="row">
     <div class="mx-auto mt-5 col-sm-6">
       <h2>Seleziona auto tra quelle disponibili per le date indicate:</h2>
-      <form:form method="post" modelAttribute="newReservation">
+      <form:form method="post" modelAttribute="newReservation" action="insert">
         <c:choose>
           <c:when test="${newReservation.id==null}" />
           <c:otherwise>

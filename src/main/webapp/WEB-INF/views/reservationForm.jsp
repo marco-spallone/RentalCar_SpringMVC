@@ -2,6 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,10 +13,7 @@
   <script src="https://kit.fontawesome.com/6b1574191b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<c:set var="url1" value="../reservations?id=${myid}" />
-<c:set var="url2" value="../cars" />
-<c:set var="url3" value="../customers/userProfile" />
-<c:set var="url4" value="../login/form" />
+<sec:authentication property="principal.id" var="myid" />
 <div class="container">
     <div class="row">
         <div class="mx-auto mt-5 col-sm-6">
@@ -30,11 +28,11 @@
                 </c:choose>
                 <div class="mb-3">
                     <label for="inizio" class="form-label">Data inizio: </label>
-                    <form:input type="date" class="form-control" id="inizio" path="dataInizio" value="${actualReservation.dataInizio}"/>
+                    <form:input type="date" class="form-control" id="inizio" path="dataInizio" value=""/>
                 </div>
                 <div class="mb-3">
                     <label for="fine" class="form-label">Data fine: </label>
-                    <form:input type="date" class="form-control" id="fine" path="dataFine" value="${actualReservation.dataFine}"/>
+                    <form:input type="date" class="form-control" id="fine" path="dataFine" value=""/>
                 </div>
                 <button type="submit" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
                     <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>

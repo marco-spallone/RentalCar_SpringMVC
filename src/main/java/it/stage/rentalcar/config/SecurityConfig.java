@@ -1,29 +1,27 @@
 package it.stage.rentalcar.config;
 
-import it.stage.rentalcar.domain.Utente;
-import it.stage.rentalcar.service.UtenteService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.context.request.RequestContextListener;
 
-import java.util.List;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;
+    private final PasswordEncoder passwordEncoder;
 
-    public SecurityConfig(UserDetailsService userDetailsService) {
+    public SecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
         this.userDetailsService = userDetailsService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Bean
@@ -31,20 +29,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new RequestContextListener();
     }
 
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    @Override
-    public UserDetailsService userDetailsService(){
-        return userDetailsService;
-    }
-
     @Override
     public void configure(final AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
     }
 
     private static final String[] ADMIN_MATCHER={
@@ -61,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String[] CUSTOMER_MATCHER={
             "/addReservation/**",
-            "/freeAuto/**",
+            "/freeCars/**",
             "/editReservation/**",
             "/deleteReservation/**"
     };
@@ -71,13 +58,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/login/form").permitAll()
                 .antMatchers("/customers/userProfile").permitAll()
-                .antMatchers(ADMIN_MATCHER).access("hasRole('ADMIN')")
-                .antMatchers(CUSTOMER_MATCHER).access("hasRole('CUSTOMER')").and()
+                .antMatchers(ADMIN_MATCHER).access("hasAuthority('ADMIN')")
+                .antMatchers(CUSTOMER_MATCHER).access("hasAuthority('CUSTOMER')").and()
                 .formLogin().loginPage("/login/form").loginProcessingUrl("/login")
                 .usernameParameter("username").passwordParameter("password")
                 .failureUrl("/login/form?error").defaultSuccessUrl("/index")
                 .and().exceptionHandling().accessDeniedPage("/login/form?forbidden")
-                .and().logout().logoutUrl("/login/form?logout")
+                .and().logout().logoutUrl("/login/form?logout").addLogoutHandler(new SecurityContextLogoutHandler())
                 .and().csrf().disable();
     }
 }

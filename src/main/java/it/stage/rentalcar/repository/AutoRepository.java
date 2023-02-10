@@ -1,7 +1,7 @@
 package it.stage.rentalcar.repository;
 
 import it.stage.rentalcar.domain.Auto;
-import it.stage.rentalcar.domain.Prenotazione;
+
 
 import java.util.List;
 

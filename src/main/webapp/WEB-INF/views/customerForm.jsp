@@ -11,10 +11,6 @@
   <script src="https://kit.fontawesome.com/6b1574191b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<c:set var="url1" value="../customers" />
-<c:set var="url2" value="../cars" />
-<c:set var="url3" value="../customers/userProfile" />
-<c:set var="url4" value="../login/form" />
 
 <div class="container">
     <div class="row">

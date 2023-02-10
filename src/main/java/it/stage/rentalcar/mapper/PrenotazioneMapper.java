@@ -5,9 +5,7 @@ import it.stage.rentalcar.domain.Prenotazione;
 import it.stage.rentalcar.domain.Utente;
 import it.stage.rentalcar.dto.PrenotazioneDTO;
 import it.stage.rentalcar.service.AutoService;
-import it.stage.rentalcar.service.AutoServiceImpl;
 import it.stage.rentalcar.service.UtenteService;
-import it.stage.rentalcar.service.UtenteServiceImpl;
 import org.springframework.stereotype.Component;
 
 import java.text.ParseException;

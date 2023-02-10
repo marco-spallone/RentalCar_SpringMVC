@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -21,25 +22,15 @@
       document.getElementById('value').setAttribute("type", "date");
   }
 </script>
+<sec:authentication property="principal.isAdmin" var="isAdmin" />
 
-<c:choose>
-  <c:when test="${isAdmin=='true'}">
-    <c:set var="url1" value="customers" />
-  </c:when>
-  <c:otherwise>
-    <c:set var="url1" value="reservations?id=${myid}" />
-  </c:otherwise>
-</c:choose>
-<c:set var="url2" value="cars" />
-<c:set var="url3" value="customers/userProfile" />
-<c:set var="url4" value="login/form" />
 <div class="container">
   <div class="row">
     <div class="mx-auto mt-5 col-sm-8">
       <h3>Prenotazioni effettuate</h3>
       <div class="row"><div class="mt-4 mb-4 col-sm-6">
         <c:choose>
-          <c:when test="${isAdmin=='true'}" />
+          <c:when test="${isAdmin==true}" />
           <c:otherwise>
             <a href="<spring:url value="reservations/add" /> "><button class="btn btn-outline-info">
               <i class="fa-regular fa-calendar-plus fa-lg"></i> Aggiungi prenotazione</button></a>
@@ -80,9 +71,9 @@
                   <c:otherwise>
                     <c:choose>
                       <c:when test="${isAdmin=='true'}">
-                        <a href="reservations/approve?id=${reservation.idPrenotazione}"><button class="btn btn-outline-success">
+                        <a href="reservations/approve?id=${id}&idPren=${reservation.idPrenotazione}"><button class="btn btn-outline-success">
                           <i class="fa-solid fa-check"></i> Accetta</button></a>
-                        <a href="reservations/decline?id=${reservation.idPrenotazione}"><button class="btn btn-outline-danger">
+                        <a href="reservations/decline?id=${id}&idPren=${reservation.idPrenotazione}"><button class="btn btn-outline-danger">
                           <i class="fa-solid fa-x"></i> Rifiuta</button></a>
                       </c:when>
                       <c:otherwise />
@@ -91,8 +82,8 @@
                 </c:choose>
               </td>
               <c:choose>
-                <c:when test="${isAdmin=='false'}">
-                  <td><a href="reservations/edit?id=${reservation.idPrenotazione}"><button class="mx-auto btn btn-outline-warning"><i class="fa-sharp fa-solid fa-pen fa-lg"></i> Modifica</button></a></td>
+                <c:when test="${isAdmin==false}">
+                  <td><a href="reservations/add?id=${reservation.idPrenotazione}"><button class="mx-auto btn btn-outline-warning"><i class="fa-sharp fa-solid fa-pen fa-lg"></i> Modifica</button></a></td>
                   <td>
                     <form action="reservations/delete" method="post">
                       <input type="hidden" name="id" value="${reservation.idPrenotazione}">

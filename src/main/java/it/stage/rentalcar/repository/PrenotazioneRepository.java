@@ -4,7 +4,6 @@ import it.stage.rentalcar.domain.Prenotazione;
 
 import java.text.ParseException;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 public interface PrenotazioneRepository {

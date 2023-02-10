@@ -31,21 +31,26 @@ public class UtenteServiceImpl implements UtenteService {
     public List<Utente> filter(String field, String value) {
         return utenteRepository.filter(field, value);
     }
-    public void insOrUpCustomer(Utente utente) throws Exception {
-        boolean validUsername = true;
+    public void insOrUpCustomer(Utente utente, String action) throws Exception {
         List<Utente> customers = utenteRepository.getCustomers(false);
-        if(utente.getUsername().equals("ADMIN")){
-            throw new Exception("L'username ADMIN non può essere utilizzato");
-        }
-        for (Utente u:customers) {
-            if(u.getUsername().equals(utente.getUsername())){
-                validUsername=false;
+        if(action.equals("update")){
+            for (Utente u:customers) {
+                if(u.getUsername().equals(utente.getUsername()) && u.getIdUtente()!=utente.getIdUtente()){
+                    throw new Exception("Username già esistente");
+                }
             }
+            utenteRepository.insOrUpCustomer(utente);
+        } else {
+            if(utente.getUsername().equals("ADMIN")){
+                throw new Exception("L'username ADMIN non può essere utilizzato");
+            }
+            for (Utente u:customers) {
+                if(u.getUsername().equals(utente.getUsername())){
+                    throw new Exception("Username già esistente");
+                }
+            }
+            utenteRepository.insOrUpCustomer(utente);
         }
-        if(!validUsername){
-            throw new Exception("Username già esistente");
-        }
-        utenteRepository.insOrUpCustomer(utente);
     }
     @Override
     public void delCustomer(int id) {

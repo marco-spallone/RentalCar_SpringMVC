@@ -2,27 +2,25 @@ package it.stage.rentalcar.config;
 
 import it.stage.rentalcar.domain.Utente;
 import it.stage.rentalcar.service.UtenteService;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-@Configuration
+@Service
 public class CustomDetailsManager implements UserDetailsService {
     UtenteService utenteService;
 
-    private final PasswordEncoder passwordEncoder;
 
-    public CustomDetailsManager(UtenteService utenteService, @Lazy PasswordEncoder passwordEncoder) {
+    public CustomDetailsManager(UtenteService utenteService) {
         this.utenteService = utenteService;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -32,8 +30,9 @@ public class CustomDetailsManager implements UserDetailsService {
         if (utente != null) {
             myUserDetails.setUsername(s);
             myUserDetails.setId(utente.getIdUtente());
-            myUserDetails.setPassword(passwordEncoder.encode(utente.getPassword()));
-            Set<GrantedAuthority> authorities = new HashSet<>();
+            myUserDetails.setPassword(utente.getPassword());
+            myUserDetails.setIsAdmin(utente.getIsAdmin());
+            List<SimpleGrantedAuthority> authorities = new ArrayList<>();
             if(utente.getIsAdmin()) {
                 authorities.add(new SimpleGrantedAuthority("ADMIN"));
             } else {
