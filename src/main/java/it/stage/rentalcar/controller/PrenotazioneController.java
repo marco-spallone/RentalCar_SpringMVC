@@ -1,5 +1,6 @@
 package it.stage.rentalcar.controller;
 
+import it.stage.rentalcar.config.MyUserDetails;
 import it.stage.rentalcar.domain.Auto;
 import it.stage.rentalcar.domain.Prenotazione;
 import it.stage.rentalcar.domain.Utente;
@@ -12,7 +13,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.text.ParseException;
 import java.util.List;
 
@@ -45,8 +45,8 @@ public class PrenotazioneController {
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addReservation(@RequestParam(value = "id", required = false) Integer id, Model model) throws Exception {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Utente u = utenteService.getUserFromUsername(authentication.getName());
+        MyUserDetails details = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Utente u = utenteService.getUserFromUsername(details.getUsername());
         PrenotazioneDTO p = new PrenotazioneDTO();
         if(id!=null){
             if(prenotazioneService.checkModificable(prenotazioneService.getReservationFromId(id))){
@@ -62,11 +62,11 @@ public class PrenotazioneController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String getFreeCars(@ModelAttribute("newReservation") PrenotazioneDTO prenotazioneDTO, Model model){
-        return "redirect:/freeCars";
+        return chooseCar(prenotazioneDTO, model);
     }
 
     @RequestMapping(value = "/freeCars", method = RequestMethod.GET)
-    public String chooseCar(PrenotazioneDTO prenotazioneDTO, Model model) {
+    public String chooseCar(@ModelAttribute("newReservation") PrenotazioneDTO prenotazioneDTO, Model model) {
         List<Auto> freeCars = prenotazioneService.getReservableCars(DateUtil.parseDate(prenotazioneDTO.getDataInizio()), DateUtil.parseDate(prenotazioneDTO.getDataFine()));
         model.addAttribute("auto", freeCars);
         model.addAttribute("newReservation", prenotazioneDTO);
@@ -75,32 +75,28 @@ public class PrenotazioneController {
 
     @PostMapping(value = "/insert")
     public String insReservation(@ModelAttribute("newReservation") PrenotazioneDTO prenotazioneDTO) throws Exception {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Utente u = utenteService.getUserFromUsername(authentication.getName());
+        MyUserDetails details = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Utente u = utenteService.getUserFromUsername(details.getUsername());
         prenotazioneService.insOrUpReservation(prenotazioneService.checkDate(prenotazioneDTO));
         return "redirect:/reservations?id="+u.getIdUtente();
     }
 
     @RequestMapping(value = "/approve", method = RequestMethod.GET)
     public String approveReservation(@RequestParam("idPren") int idPren, @RequestParam("id") int id){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Utente u = utenteService.getUserFromUsername(authentication.getName());
         prenotazioneService.updateStatus(true, idPren);
         return "redirect:/reservations?id="+id;
     }
 
     @RequestMapping(value = "/decline", method = RequestMethod.GET)
     public String declineReservation(@RequestParam("idPren") int idPren, @RequestParam("id") int id){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Utente u = utenteService.getUserFromUsername(authentication.getName());
         prenotazioneService.updateStatus(false, idPren);
         return "redirect:/reservations?id="+id;
     }
 
     @PostMapping(value = "/delete")
     public String deleteReservation(@RequestParam("id") int id){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Utente u = utenteService.getUserFromUsername(authentication.getName());
+        MyUserDetails details = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Utente u = utenteService.getUserFromUsername(details.getUsername());
         prenotazioneService.delReservation(id);
         return "redirect:/reservations?id="+u.getIdUtente();
     }

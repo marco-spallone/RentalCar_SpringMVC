@@ -57,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(final HttpSecurity http) throws Exception{
         http.authorizeRequests()
                 .antMatchers("/login/form").permitAll()
-                .antMatchers("/customers/userProfile").permitAll()
+                .antMatchers("/customers/userProfile").access("hasAnyAuthority('ADMIN', 'CUSTOMER')")
                 .antMatchers(ADMIN_MATCHER).access("hasAuthority('ADMIN')")
                 .antMatchers(CUSTOMER_MATCHER).access("hasAuthority('CUSTOMER')").and()
                 .formLogin().loginPage("/login/form").loginProcessingUrl("/login")

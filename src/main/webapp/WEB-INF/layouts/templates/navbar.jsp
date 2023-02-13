@@ -15,15 +15,17 @@
 <sec:authentication property="principal.id" var="myid" />
 <c:choose>
     <c:when test="${isAdmin}">
-        <c:set var="url1" value="${pageContext.servletContext.contextPath}/customers" />
+        <c:url var="url1" value="/customers" />
     </c:when>
     <c:otherwise>
-        <c:set var="url1" value="${pageContext.servletContext.contextPath}/reservations?id=${myid}" />
+        <c:url var="url1" value="/reservations">
+            <c:param name="id" value="${myid}" />
+        </c:url>
     </c:otherwise>
 </c:choose>
-<c:set var="url2" value="${pageContext.servletContext.contextPath}/cars" />
-<c:set var="url3" value="${pageContext.servletContext.contextPath}/customers/userProfile" />
-<c:set var="url4" value="${pageContext.servletContext.contextPath}/login/form?logout" />
+<c:url var="url2" value="/cars" />
+<c:url var="url3" value="/customers/userProfile" />
+<c:url var="url4" value="/login/form?logout" />
 
 <!-- HEADER -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

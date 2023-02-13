@@ -1,5 +1,6 @@
 package it.stage.rentalcar.controller;
 
+import it.stage.rentalcar.config.MyUserDetails;
 import it.stage.rentalcar.domain.Utente;
 import it.stage.rentalcar.service.UtenteService;
 import org.springframework.security.core.Authentication;
@@ -20,8 +21,8 @@ public class IndexController {
 
     @GetMapping(value = "/index")
     public String index(){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Utente u = utenteService.getUserFromUsername(authentication.getName());
+        MyUserDetails details = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Utente u = utenteService.getUserFromUsername(details.getUsername());
         if(u.getIsAdmin()){
             return "redirect:/customers";
         } else {

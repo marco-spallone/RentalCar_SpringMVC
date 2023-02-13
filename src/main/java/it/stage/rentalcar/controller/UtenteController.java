@@ -1,5 +1,6 @@
 package it.stage.rentalcar.controller;
 
+import it.stage.rentalcar.config.MyUserDetails;
 import it.stage.rentalcar.domain.Utente;
 import it.stage.rentalcar.service.UtenteService;
 import org.springframework.security.core.Authentication;
@@ -62,15 +63,17 @@ public class UtenteController {
 
     @RequestMapping(value = "/userProfile", method = RequestMethod.GET)
     public String userProfile(Model model){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Utente utente = utenteService.getUserFromUsername(authentication.getName());
+        MyUserDetails details = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Utente utente = utenteService.getUserFromUsername(details.getUsername());
         model.addAttribute("newCustomer", utente);
         return "userProfile";
     }
 
     @RequestMapping(value = "/userProfile", method = RequestMethod.POST)
-    public String upProfile(@ModelAttribute("newCustomer") Utente utente) throws Exception {
+    public String upProfile(@ModelAttribute("newCustomer") Utente utente, Model model) throws Exception {
         utenteService.insOrUpCustomer(utente, "update");
+        MyUserDetails details = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        details.setUsername(utente.getUsername());
         return "redirect:/customers/userProfile";
     }
 

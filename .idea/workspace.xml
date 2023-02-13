@@ -10,38 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49c873af-4aaa-48a2-b84f-678c0f7086f6" name="Changes" comment="-Ultime correzioni.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/config/PasswordEncoderConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/config/CustomDetailsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/config/CustomDetailsManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/config/MyUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/config/MyUserDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/config/WebAppSecurityInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/config/WebAppSecurityInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/AutoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/AutoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/PrenotazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/PrenotazioneController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/UtenteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/UtenteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/mapper/PrenotazioneMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/mapper/PrenotazioneMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/AutoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/AutoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/AutoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/AutoRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/PrenotazioneRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/UtenteRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/UtenteRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/PrenotazioneServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/util/DateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/util/DateUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/definitions/tiles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/definitions/tiles.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/templates/navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/templates/navbar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/carFleet.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/carFleet.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/carForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/carForm.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customerForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customerForm.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customers.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/customers.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reservationForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reservationForm.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reservations.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reservations.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/selectCar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/selectCar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userProfile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userProfile.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +217,8 @@
       <workItem from="1675844752321" duration="18977000" />
       <workItem from="1675931383558" duration="12405000" />
       <workItem from="1675949515633" duration="13832000" />
-      <workItem from="1676017835066" duration="21844000" />
+      <workItem from="1676017835066" duration="21887000" />
+      <workItem from="1676277423238" duration="5729000" />
     </task>
     <task id="LOCAL-00001" summary="-Creazione progetto e definizione delle dipendenze Maven.">
       <created>1674837981489</created>
@@ -356,7 +332,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675961436890</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="-Ultime correzioni.">
+      <created>1676048769338</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1676048769338</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -405,24 +388,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.5.RELEASE/spring-security-core-5.1.5.RELEASE.jar!/org/springframework/security/authentication/dao/DaoAuthenticationProvider.class</url>
-          <line>64</line>
-          <option name="timeStamp" value="8" />
+          <url>file://$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/UtenteController.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.5.RELEASE/spring-security-core-5.1.5.RELEASE.jar!/org/springframework/security/authentication/dao/DaoAuthenticationProvider.class</url>
-          <line>62</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.5.RELEASE/spring-security-core-5.1.5.RELEASE.jar!/org/springframework/security/authentication/dao/DaoAuthenticationProvider.class</url>
-          <line>60</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/UtenteRepositoryImpl.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="22" />
+          <url>file://$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/UtenteController.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
