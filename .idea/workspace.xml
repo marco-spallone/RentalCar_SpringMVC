@@ -11,12 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="49c873af-4aaa-48a2-b84f-678c0f7086f6" name="Changes" comment="-Ultime correzioni.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/PrenotazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/PrenotazioneController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/UtenteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/UtenteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/templates/navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/templates/navbar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/selectCar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/selectCar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/UtenteRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/UtenteRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/stage/rentalcar/service/UtenteServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +217,7 @@
       <workItem from="1675931383558" duration="12405000" />
       <workItem from="1675949515633" duration="13832000" />
       <workItem from="1676017835066" duration="21887000" />
-      <workItem from="1676277423238" duration="5729000" />
+      <workItem from="1676277423238" duration="14173000" />
     </task>
     <task id="LOCAL-00001" summary="-Creazione progetto e definizione delle dipendenze Maven.">
       <created>1674837981489</created>
@@ -339,7 +338,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676048769338</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="-Ultime correzioni.">
+      <created>1676283557076</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1676283557076</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -388,14 +394,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/UtenteController.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/stage/rentalcar/controller/UtenteController.java</url>
-          <line>66</line>
-          <option name="timeStamp" value="30" />
+          <url>file://$PROJECT_DIR$/src/main/java/it/stage/rentalcar/repository/UtenteRepositoryImpl.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

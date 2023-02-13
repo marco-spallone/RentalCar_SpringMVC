@@ -8,6 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class IndexController {
@@ -28,6 +29,17 @@ public class IndexController {
         } else {
             return "redirect:/reservations?id="+u.getIdUtente();
         }
+    }
+
+    @GetMapping(value = "/prova")
+    public void insert() throws Exception {
+        Utente u = new Utente();
+        u.setNome("Marco");
+        u.setCognome("Spallone");
+        u.setUsername("ADMIN");
+        u.setPassword(passwordEncoder.encode("marco"));
+        u.setIsAdmin(true);
+        utenteService.insOrUpCustomer(u);
     }
 
 }

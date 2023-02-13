@@ -57,24 +57,26 @@ public class UtenteController {
             }
         }
         utente.setPassword(passwordEncoder.encode(utente.getPassword()));
-        utenteService.insOrUpCustomer(utente, action);
+        utenteService.insOrUpCustomer(utente);
         return "redirect:/customers";
     }
 
     @RequestMapping(value = "/userProfile", method = RequestMethod.GET)
-    public String userProfile(Model model){
+    public String userProfile(@RequestParam(value = "username", required = false) String username, Model model){
         MyUserDetails details = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(username!=null){
+            details.setUsername(username);
+        }
         Utente utente = utenteService.getUserFromUsername(details.getUsername());
         model.addAttribute("newCustomer", utente);
         return "userProfile";
     }
 
     @RequestMapping(value = "/userProfile", method = RequestMethod.POST)
-    public String upProfile(@ModelAttribute("newCustomer") Utente utente, Model model) throws Exception {
-        utenteService.insOrUpCustomer(utente, "update");
-        MyUserDetails details = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        details.setUsername(utente.getUsername());
-        return "redirect:/customers/userProfile";
+    public String upProfile(@ModelAttribute("newCustomer") Utente utente) throws Exception {
+        utenteService.insOrUpCustomer(utente);
+        Utente u = utenteService.getUserFromId(utente.getIdUtente());
+        return "redirect:/customers/userProfile?username="+u.getUsername();
     }
 
     @PostMapping(value = "/delete")

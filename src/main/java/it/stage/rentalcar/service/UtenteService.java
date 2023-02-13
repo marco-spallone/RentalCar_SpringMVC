@@ -9,6 +9,6 @@ public interface UtenteService {
     Utente getUserFromId(int id);
     Utente getUserFromUsername(String username);
     List<Utente> filter(String field, String value);
-    void insOrUpCustomer(Utente utente, String action) throws Exception;
+    void insOrUpCustomer(Utente utente) throws Exception;
     void delCustomer(int id);
 }

@@ -52,11 +52,15 @@ public class UtenteRepositoryImpl implements UtenteRepository{
 
     @Override
     public void insOrUpCustomer(Utente utente) {
+        Transaction t = null;
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
-            session.beginTransaction();
+            t=session.beginTransaction();
             session.saveOrUpdate(utente);
-            session.getTransaction().commit();
+            t.commit();
         } catch (Exception e){
+            if(t!=null){
+                t.rollback();
+            }
             System.out.println(e);
         }
     }
